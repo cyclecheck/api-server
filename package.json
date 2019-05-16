@@ -5,6 +5,7 @@
   "author": "",
   "license": "MIT",
   "scripts": {
+    "commit": "git-cz",
     "build": "tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
@@ -22,19 +23,29 @@
   "dependencies": {
     "@nestjs/common": "^6.0.0",
     "@nestjs/core": "^6.0.0",
-    "@nestjs/platform-express": "^6.0.0", 
+    "@nestjs/platform-express": "^6.0.0",
+    "dotenv": "^8.0.0",
+    "joi": "^14.3.1",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
     "rxjs": "^6.3.3"
   },
   "devDependencies": {
+    "@commitlint/cli": "7.6.1",
+    "@commitlint/config-conventional": "7.6.0",
     "@nestjs/testing": "^6.0.0",
+    "@types/dotenv": "^6.1.1",
     "@types/express": "^4.16.0",
     "@types/jest": "^23.3.13",
+    "@types/joi": "^14.3.3",
     "@types/node": "^10.12.18",
     "@types/supertest": "^2.0.7",
+    "commitizen": "3.1.1",
     "concurrently": "^4.1.0",
+    "cz-conventional-changelog": "2.1.0",
+    "husky": "2.3.0",
     "jest": "^23.6.0",
+    "lint-staged": "8.1.7",
     "nodemon": "^1.18.9",
     "prettier": "^1.15.3",
     "supertest": "^3.4.1",
@@ -42,11 +53,43 @@
     "ts-node": "8.1.0",
     "tsconfig-paths": "3.8.0",
     "tslint": "5.16.0",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-config-standard": "8.0.1",
     "typescript": "3.4.3",
     "wait-on": "^3.2.0"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "{src,test}/**/*.ts": [
+      "tslint --project ./tsconfig.json --fix",
+      "git add"
+    ],
+    "*.{ts,vue,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "jest": {
-    "moduleFileExtensions": ["js", "json", "ts"],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
     "rootDir": "src",
     "testRegex": ".spec.ts$",
     "transform": {
