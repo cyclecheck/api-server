@@ -9,5 +9,6 @@ import { getEnvFilename } from './environment'
       useValue: new ConfigService(getEnvFilename()),
     },
   ],
+  exports: [ConfigService],
 })
 export class ConfigModule {}
