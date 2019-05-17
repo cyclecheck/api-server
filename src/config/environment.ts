@@ -9,13 +9,13 @@ export const ENVS = [ENV_DEV, ENV_PROD, ENV_TEST]
 
 export const ENV_FILENAME = 'cyclecheck.env'
 
-export const isDev = (config: Config = null) =>
+export const isDev = (config: Partial<Config> = {}) =>
   (config.env || process.env.NODE_ENV) === ENV_DEV
 
-export const isProd = (config: Config = null) =>
+export const isProd = (config: Partial<Config> = {}) =>
   (config.env || process.env.NODE_ENV) === ENV_PROD
 
-export const isTest = (config: Config = null) =>
+export const isTest = (config: Partial<Config> = {}) =>
   (config.env || process.env.NODE_ENV) === ENV_TEST
 
 export function getEnvFilename() {
