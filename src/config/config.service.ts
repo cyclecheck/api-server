@@ -3,16 +3,10 @@ import { readFileSync } from 'fs'
 import { Injectable, Logger } from '@nestjs/common'
 import { parse } from 'dotenv'
 import { object, ObjectSchema, string, number, validate } from 'joi'
-import {
-  ENVS,
-  ENV_DEV,
-  isDev,
-  isProd,
-  isTest,
-  getEnvFilename,
-} from './environment'
+import { ENVS, ENV_DEV, isDev, isProd, isTest } from './environment'
 
 export interface Config {
+  googleMapsApi: string
   openweatherApi: string
   env: string
   host: string
@@ -61,6 +55,7 @@ export class ConfigService {
 
   private mapEnvConfig(validEnvConfig: EnvConfig): Config {
     return {
+      googleMapsApi: validEnvConfig.API_KEY_GOOGLE_MAPS,
       openweatherApi: validEnvConfig.API_KEY_OPENWEATHER,
       env: validEnvConfig.NODE_ENV,
       host: validEnvConfig.HOST,
@@ -71,6 +66,7 @@ export class ConfigService {
 
 interface EnvConfig {
   NODE_ENV: string
+  API_KEY_GOOGLE_MAPS: string
   API_KEY_OPENWEATHER: string
   HOST: string
   PORT: number
@@ -80,6 +76,7 @@ const EnvConfigSchema: ObjectSchema = object({
   NODE_ENV: string()
     .valid(ENVS)
     .default(ENV_DEV),
+  API_KEY_GOOGLE_MAPS: string().required(),
   API_KEY_OPENWEATHER: string().required(),
   HOST: string().default('localhost'),
   PORT: number().default(3000),

@@ -10,7 +10,8 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
-    "strict": true
+    "strict": true,
+    "noEmitOnError": true
   },
   "exclude": ["node_modules"]
 }
