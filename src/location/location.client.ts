@@ -1,6 +1,6 @@
-import { GoogleMapsClient, createClient, AddressComponent } from '@google/maps'
+import { AddressComponent, createClient, GoogleMapsClient } from '@google/maps'
 
-import { Place, AutocompletePlace, LatLng } from './location.service'
+import { AutocompletePlace, LatLng, Place } from './location.service'
 
 export class LocationClient {
   private readonly googleClient: GoogleMapsClient

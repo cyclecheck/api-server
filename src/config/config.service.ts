@@ -1,11 +1,11 @@
-import { readFileSync } from 'fs'
 import { Injectable, Logger } from '@nestjs/common'
 import { parse } from 'dotenv'
-import { object, ObjectSchema, string, number, validate } from 'joi'
-import { resolve } from 'path'
+import { readFileSync } from 'fs'
 import { ensureDirSync } from 'fs-extra'
+import { number, object, ObjectSchema, string, validate } from 'joi'
+import { resolve } from 'path'
 
-import { ENVS, ENV_DEV, isDev, isProd, isTest } from './environment'
+import { ENV_DEV, ENVS, isDev, isProd, isTest } from './environment'
 
 export interface Config {
   googleMapsApi: string

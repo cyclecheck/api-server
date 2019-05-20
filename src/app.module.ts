@@ -1,13 +1,15 @@
-import { Module, Logger } from '@nestjs/common'
+import { Logger, Module } from '@nestjs/common'
 
-import { LocationModule } from './location/location.module'
 import { ConfigModule } from './config/config.module'
 import { ConfigService } from './config/config.service'
-import { prettyPrint } from './util/misc'
 import { DatabaseModule } from './database/database.module'
+import { LocationModule } from './location/location.module'
+import { prettyPrint } from './util/misc'
+import { WeatherService } from './weather/weather.service'
 
 @Module({
   imports: [ConfigModule, DatabaseModule, LocationModule],
+  providers: [WeatherService],
 })
 export class AppModule {
   private readonly logger = new Logger('AppModule')

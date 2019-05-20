@@ -11,7 +11,8 @@
     "max-line-length": [true, 100],
     "arrow-parens": false,
     "trailing-comma": [false, { "multiline": "always", "singleline": "never" }],
-    "no-unused-variable": true
+    "no-unused-variable": true,
+    "ordered-imports": true
   },
   "rulesDirectory": []
 }

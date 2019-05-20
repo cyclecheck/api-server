@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common'
 
+import { ConfigModule } from '../config/config.module'
 import { LocationController } from './location.controller'
 import { LocationService } from './location.service'
-import { ConfigModule } from '../config/config.module'
 
 @Module({
   imports: [ConfigModule],

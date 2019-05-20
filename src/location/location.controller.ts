@@ -1,17 +1,17 @@
 import {
   Controller,
   Get,
-  Query,
   HttpException,
   HttpStatus,
   Param,
+  Query,
 } from '@nestjs/common'
 
 import {
-  LocationService,
-  Place,
   AutocompletePlace,
   LatLng,
+  LocationService,
+  Place,
 } from './location.service'
 
 @Controller('location')
