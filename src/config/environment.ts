@@ -1,5 +1,6 @@
-import { Config } from './config.service'
 import { resolve } from 'path'
+
+import { Config } from './config.service'
 
 export const ENV_DEV = 'development'
 export const ENV_PROD = 'production'
