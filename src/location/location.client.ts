@@ -1,6 +1,6 @@
 import { GoogleMapsClient, createClient, AddressComponent } from '@google/maps'
 
-import { Place } from './location.service'
+import { Place, AutocompletePlace, LatLng } from './location.service'
 
 export class LocationClient {
   private readonly googleClient: GoogleMapsClient
@@ -15,6 +15,42 @@ export class LocationClient {
       .asPromise()
 
     return parsePlacesResult(result.json.results[0].address_components)
+  }
+
+  async latLngFromPlaceId(
+    placeid: string,
+    sessiontoken: string,
+  ): Promise<LatLng | null> {
+    try {
+      const result = await this.googleClient
+        .place({ placeid, sessiontoken })
+        .asPromise()
+
+      if (result.json.status !== 'OK') return null
+
+      const { lat, lng } = result.json.result.geometry.location
+      return { lat, lng }
+    } catch (error) {
+      return null
+    }
+  }
+
+  async autocompletePlaces(
+    input: string,
+    sessiontoken: string,
+  ): Promise<AutocompletePlace[]> {
+    const result = await this.googleClient
+      .placesAutoComplete({
+        input,
+        sessiontoken,
+        types: '(cities)',
+      })
+      .asPromise()
+
+    return result.json.predictions.map(prediction => ({
+      id: prediction.place_id,
+      name: prediction.description,
+    }))
   }
 }
 
