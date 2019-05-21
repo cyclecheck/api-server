@@ -7,6 +7,7 @@ import {
   Query,
 } from '@nestjs/common'
 
+import { AuthToken } from '../auth/auth.decorator'
 import {
   AutocompletePlace,
   LatLng,
@@ -33,10 +34,8 @@ export class LocationController {
   @Get(':id')
   async idToLatLng(
     @Param('id') id: string,
-    @Query('token') token: string,
+    @AuthToken() token: string,
   ): Promise<LatLng> {
-    if (!token) invalidToken()
-
     const found = await this.locationService.idToLatLng(id, token)
     if (!found) {
       throw new HttpException(
@@ -49,21 +48,14 @@ export class LocationController {
   }
 
   @Get('search')
-  async search(@Query() { input, token }: SearchQuery): Promise<
-    AutocompletePlace[]
-  > {
+  async search(
+    @Query() { input }: SearchQuery,
+    @AuthToken() token: string,
+  ): Promise<AutocompletePlace[]> {
     if (!input) return []
-    else if (!token) invalidToken()
 
     return this.locationService.searchPlaces(input, token)
   }
-}
-
-const invalidToken = () => {
-  throw new HttpException(
-    'A unique session `token` is required',
-    HttpStatus.BAD_REQUEST,
-  )
 }
 
 interface SearchQuery {
