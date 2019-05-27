@@ -6,26 +6,28 @@ import {
 } from '@nestjs/common'
 import { Reflector } from '@nestjs/core'
 
-import { IGNORE_AUTH } from './auth.decorator'
+import { IGNORE_SESSION } from './session.decorator'
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class SessionGuard implements CanActivate {
   constructor(private readonly reflector: Reflector) {}
 
   canActivate(context: ExecutionContext): boolean {
     const ignoreGuard = this.reflector.get<string[]>(
-      IGNORE_AUTH,
+      IGNORE_SESSION,
       context.getHandler(),
     )
 
     if (ignoreGuard) return true
 
-    const authHeader = context.switchToHttp().getRequest().headers[AUTH_HEADER]
+    const authHeader = context.switchToHttp().getRequest().headers[
+      SESSION_HEADER
+    ]
     if (!authHeader) {
-      throw new UnauthorizedException(`Missing '${AUTH_HEADER}' header!`)
+      throw new UnauthorizedException(`Missing '${SESSION_HEADER}' header!`)
     }
     return true
   }
 }
 
-export const AUTH_HEADER = 'auth'
+export const SESSION_HEADER = 'session'

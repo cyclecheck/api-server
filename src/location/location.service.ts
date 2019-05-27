@@ -15,6 +15,10 @@ export class LocationService {
     return this.locationClient.reverseGeocode(lat, lng)
   }
 
+  placeDetails(id: string, token: string): Promise<Place | null> {
+    return this.locationClient.getPlaceDetails(id, token)
+  }
+
   idToLatLng(id: string, token: string): Promise<LatLng | null> {
     return this.locationClient.latLngFromPlaceId(id, token)
   }
@@ -25,6 +29,7 @@ export class LocationService {
 }
 
 export interface Place {
+  id: string
   city: string
   adminArea: string
   adminAreaShort: string

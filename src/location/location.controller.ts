@@ -1,13 +1,7 @@
-import {
-  Controller,
-  Get,
-  HttpException,
-  HttpStatus,
-  Param,
-  Query,
-} from '@nestjs/common'
+import { Controller, Get, Param, Query } from '@nestjs/common'
 
-import { AuthToken } from '../auth/auth.decorator'
+import { SessionToken } from '../session/session.decorator'
+import { APIResponse, badRequest, notFound, response } from '../util/http'
 import {
   AutocompletePlace,
   LatLng,
@@ -20,45 +14,33 @@ export class LocationController {
   constructor(private readonly locationService: LocationService) {}
 
   @Get('latlng')
-  async fromLatLng(@Query() { lat, lng }: LatLng): Promise<Place> {
+  async fromLatLng(@Query() { lat, lng }: LatLng): APIResponse<Place> {
     if (!lat || !lng) {
-      throw new HttpException(
-        'Both lat and lng are required',
-        HttpStatus.BAD_REQUEST,
-      )
+      throw badRequest('Both lat and lng are required')
     }
 
-    return this.locationService.decodeLatLng(lat, lng)
+    return response(await this.locationService.decodeLatLng(lat, lng))
   }
 
-  @Get(':id')
-  async idToLatLng(
+  @Get('place/:id')
+  async placeDetails(
     @Param('id') id: string,
-    @AuthToken() token: string,
-  ): Promise<LatLng> {
-    const found = await this.locationService.idToLatLng(id, token)
-    if (!found) {
-      throw new HttpException(
-        `Unable to find Place matching ${id}`,
-        HttpStatus.NOT_FOUND,
-      )
-    }
+    @SessionToken() token: string,
+  ): APIResponse<Place> {
+    const found = await this.locationService.placeDetails(id, token)
+    if (found) return response(found)
 
-    return found
+    throw notFound(`Unable to find Place matching ${id}`)
   }
 
   @Get('search')
   async search(
-    @Query() { input }: SearchQuery,
-    @AuthToken() token: string,
-  ): Promise<AutocompletePlace[]> {
-    if (!input) return []
+    @Query('input') input: string,
+    @SessionToken() token: string,
+  ): APIResponse<AutocompletePlace[]> {
+    if (!input) return response([], 'Found no matches')
 
-    return this.locationService.searchPlaces(input, token)
+    const result = await this.locationService.searchPlaces(input, token)
+    return response(result)
   }
-}
-
-interface SearchQuery {
-  input: string
-  token: string
 }

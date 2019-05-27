@@ -1,11 +1,11 @@
 import { Logger, Module } from '@nestjs/common'
 import { APP_GUARD } from '@nestjs/core'
 
-import { AuthGuard } from './auth/auth.guard'
 import { ConfigModule } from './config/config.module'
 import { ConfigService } from './config/config.service'
 import { DatabaseModule } from './database/database.module'
 import { LocationModule } from './location/location.module'
+import { SessionGuard } from './session/session.guard'
 import { prettyPrint } from './util/misc'
 import { WeatherController } from './weather/weather.controller'
 import { WeatherModule } from './weather/weather.module'
@@ -16,7 +16,7 @@ import { WeatherModule } from './weather/weather.module'
   providers: [
     {
       provide: APP_GUARD,
-      useClass: AuthGuard,
+      useClass: SessionGuard,
     },
   ],
 })

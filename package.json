@@ -1,15 +1,15 @@
 {
   "name": "cyclecheck-server",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "version": "1.0.0-dev",
+  "description": "Backend API for CycleCheck mobile app.",
+  "author": "Jordon de Hoog",
   "license": "MIT",
   "scripts": {
     "commit": "git-cz",
     "build": "tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
-    "start:dev": "concurrently --handle-input \"wait-on dist/main.js && nodemon\" \"tsc -w -p tsconfig.build.json\" ",
+    "start:dev": "rimraf dist/ && concurrently --handle-input \"wait-on dist/main.js && nodemon\" \"tsc -w -p tsconfig.build.json\" ",
     "start:debug": "nodemon --config nodemon-debug.json",
     "prestart:prod": "rimraf dist && npm run build",
     "start:prod": "node dist/main.js",
@@ -37,8 +37,6 @@
     "typeorm": "^0.2.17"
   },
   "devDependencies": {
-    "@commitlint/cli": "7.6.1",
-    "@commitlint/config-conventional": "7.6.0",
     "@nestjs/testing": "^6.0.0",
     "@types/dotenv": "^6.1.1",
     "@types/express": "^4.16.0",
@@ -68,8 +66,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
@@ -86,11 +83,6 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
   },
   "jest": {
     "moduleFileExtensions": [
