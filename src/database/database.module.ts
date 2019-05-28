@@ -4,6 +4,7 @@ import { join } from 'path'
 
 import { ConfigModule } from '../config/config.module'
 import { ConfigService } from '../config/config.service'
+import { PlaceEntity } from '../location/place.entity'
 
 export const DATABASE_NAME = 'cyclecheck.db'
 
@@ -15,7 +16,7 @@ export const DATABASE_NAME = 'cyclecheck.db'
         type: 'sqlite',
         database: join(configService.config.dataDir, DATABASE_NAME),
         logging: true,
-        entities: [],
+        entities: [PlaceEntity],
       }),
       inject: [ConfigService],
     }),

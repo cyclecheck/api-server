@@ -1,6 +1,7 @@
 import { AddressComponent, createClient, GoogleMapsClient } from '@google/maps'
 
-import { AutocompletePlace, LatLng, Place } from './location.service'
+import { AutocompletePlace } from './location.service'
+import { Place } from './place.entity'
 
 export class LocationClient {
   private readonly googleClient: GoogleMapsClient
@@ -14,7 +15,7 @@ export class LocationClient {
       .reverseGeocode({ latlng: { lat, lng } })
       .asPromise()
 
-    return parsePlacesResult(result.json.results[0])
+    return parsePlacesResult({ ...result.json.results[0], lat, lng })
   }
 
   async getPlaceDetails(
@@ -24,18 +25,8 @@ export class LocationClient {
     const result = await this.makePlaceRequest(placeid, sessiontoken)
     if (!result) return null
 
-    return parsePlacesResult(result)
-  }
-
-  async latLngFromPlaceId(
-    placeid: string,
-    sessiontoken: string,
-  ): Promise<LatLng | null> {
-    const result = await this.makePlaceRequest(placeid, sessiontoken)
-    if (!result) return null
-
     const { lat, lng } = result.geometry.location
-    return { lat, lng }
+    return parsePlacesResult({ ...result, lat, lng })
   }
 
   async autocompletePlaces(
@@ -74,10 +65,12 @@ export class LocationClient {
 interface Result {
   address_components: AddressComponent[]
   place_id: string
+  lat: number
+  lng: number
 }
 
-function parsePlacesResult(result: Result): Place {
-  const componentMap: AddressComponentMap = result.address_components.reduce(
+function parsePlacesResult({ place_id: id, lat, lng, ...rest }: Result): Place {
+  const componentMap: AddressComponentMap = rest.address_components.reduce(
     (prev, value) => ({
       ...prev,
       [value.types[0] as string]: {
@@ -94,7 +87,9 @@ function parsePlacesResult(result: Result): Place {
     componentMap[key] ? componentMap[key].short || '' : ''
 
   return {
-    id: result.place_id,
+    id,
+    lat,
+    lng,
     city: long('locality'),
     adminArea: long('administrative_area_level_1'),
     adminAreaShort: short('administrative_area_level_1'),
