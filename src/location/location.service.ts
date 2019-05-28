@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, Logger } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 
@@ -8,6 +8,7 @@ import { Place, PlaceEntity } from './place.entity'
 
 @Injectable()
 export class LocationService {
+  private readonly logger = new Logger('LocationService')
   private readonly locationClient: LocationClient
 
   constructor(
@@ -31,7 +32,11 @@ export class LocationService {
 
   async placeDetails(id: string, token: string): Promise<Place | null> {
     const cached = await this.placeRepository.findOne(id)
-    if (cached) return cached
+    if (cached) {
+      this.logger.debug(`Retrieving ${id} from cache.`)
+      // TODO: If Place record is very old 6 months? refresh the id
+      return cached
+    }
 
     const result = await this.locationClient.getPlaceDetails(id, token)
     if (result) {
@@ -43,7 +48,10 @@ export class LocationService {
 
   async idToLatLng(id: string, token: string): Promise<LatLng | null> {
     const cached = await this.placeRepository.findOne(id)
-    if (cached) return { lat: cached.lat, lng: cached.lng }
+    if (cached) {
+      this.logger.debug(`Retrieving ${id} from cache.`)
+      return { lat: cached.lat, lng: cached.lng }
+    }
 
     const result = await this.locationClient.getPlaceDetails(id, token)
     if (!result) return null

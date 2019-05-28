@@ -7,12 +7,10 @@ import { DatabaseModule } from './database/database.module'
 import { LocationModule } from './location/location.module'
 import { SessionGuard } from './session/session.guard'
 import { prettyPrint } from './util/misc'
-import { WeatherController } from './weather/weather.controller'
 import { WeatherModule } from './weather/weather.module'
 
 @Module({
   imports: [ConfigModule, DatabaseModule, WeatherModule, LocationModule],
-  controllers: [WeatherController],
   providers: [
     {
       provide: APP_GUARD,

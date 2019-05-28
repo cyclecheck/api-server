@@ -12,12 +12,19 @@ export const DATABASE_NAME = 'cyclecheck.db'
   imports: [
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        type: 'sqlite',
-        database: join(configService.config.dataDir, DATABASE_NAME),
-        logging: true,
-        entities: [PlaceEntity],
-      }),
+      useFactory: (configService: ConfigService) => {
+        const dbName = configService.isDev
+          ? DATABASE_NAME.replace('.db', '-dev.db')
+          : DATABASE_NAME
+
+        return {
+          type: 'sqlite',
+          database: join(configService.config.dataDir, dbName),
+          logging: configService.isDev,
+          synchronize: true,
+          entities: [PlaceEntity],
+        }
+      },
       inject: [ConfigService],
     }),
   ],
