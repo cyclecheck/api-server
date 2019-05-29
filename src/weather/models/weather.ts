@@ -51,25 +51,25 @@ export function createWeatherModel(forecast: Forecast): Weather {
 function createWeatherBlock(datapoint: DataPoint): WeatherBlock {
   return {
     forecastedTime: datapoint.time,
-    temperature: datapoint.temperature,
-    apparentTemperature: datapoint.apparentTemperature,
-    cloudPercent: datapoint.cloudCover,
-    humidity: datapoint.humidity,
-    uvIndex: datapoint.uvIndex,
+    temperature: datapoint.temperature!,
+    apparentTemperature: datapoint.apparentTemperature!,
+    cloudPercent: datapoint.cloudCover!,
+    humidity: datapoint.humidity!,
+    uvIndex: datapoint.uvIndex!,
     wind: createWind(datapoint),
     precipitation: createPrecipitation(datapoint),
-    weatherType: getDisplayIcon(datapoint.icon),
+    weatherType: getDisplayIcon(datapoint.icon!),
   }
 }
 
 function createWind({ windBearing, windGust, windSpeed }: DataPoint): Wind {
-  return new WindModel(windBearing, windGust, windSpeed)
+  return new WindModel(windBearing!, windGust!, windSpeed!)
 }
 
 function createPrecipitation(datapoint: DataPoint): Preciptation {
   return {
-    probability: datapoint.precipProbability,
-    type: datapoint.precipType,
-    intensity: datapoint.precipIntensity,
+    probability: datapoint.precipProbability!,
+    type: datapoint.precipType!,
+    intensity: datapoint.precipIntensity!,
   }
 }
