@@ -12,7 +12,8 @@
     "arrow-parens": false,
     "trailing-comma": [false, { "multiline": "always", "singleline": "never" }],
     "no-unused-variable": true,
-    "ordered-imports": true
+    "ordered-imports": true,
+    "no-non-null-assertion": false
   },
   "rulesDirectory": []
 }
