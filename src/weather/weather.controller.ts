@@ -1,10 +1,4 @@
-import {
-  CacheInterceptor,
-  Controller,
-  Get,
-  Param,
-  UseInterceptors,
-} from '@nestjs/common'
+import { Controller, Get, Param } from '@nestjs/common'
 
 import { LocationService } from '../location/location.service'
 import { SessionToken } from '../session/session.decorator'
@@ -20,7 +14,6 @@ export class WeatherController {
   ) {}
 
   @Get(':id')
-  @UseInterceptors(CacheInterceptor)
   async checkWeather(
     @Param('id') id: string,
     @SessionToken() token: string,
@@ -29,13 +22,14 @@ export class WeatherController {
     if (!location) throw notFound(`Could not find place: ${id}`)
 
     const { lat, lng } = location
-    const weather = await this.weatherService.getWeatherForecast(lat, lng)
+    const weather = await this.weatherService.getWeatherForecast(id, lat, lng)
     if (!weather) {
       throw serviceUnavailable(
         `Unable to get required forecast information for ${id}`,
       )
     }
 
+    // TODO: Map the result based on query params
     // TODO: Calculate the score
 
     return response({ score: -1, weather })
