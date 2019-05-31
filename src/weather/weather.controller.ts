@@ -1,9 +1,10 @@
-import { Controller, Get, Param } from '@nestjs/common'
+import { Controller, Get, Param, Query } from '@nestjs/common'
+import { Units } from 'darkskyapi-ts'
 
 import { LocationService } from '../location/location.service'
 import { SessionToken } from '../session/session.decorator'
 import { notFound, serviceUnavailable } from '../util/errors'
-import { APIResponse, response } from '../util/http'
+import { APIResponse, badRequest, response } from '../util/http'
 import { WeatherService } from './weather.service'
 
 @Controller('weather')
@@ -17,7 +18,12 @@ export class WeatherController {
   async checkWeather(
     @Param('id') id: string,
     @SessionToken() token: string,
+    @Query() { maxTemp, minTemp, maxWind, units }: CheckQueryParams,
   ): APIResponse<any> {
+    if (!maxTemp || !minTemp || !maxWind) {
+      throw badRequest('Required params were not supplied')
+    }
+
     const location = await this.locationService.placeDetails(id, token)
     if (!location) throw notFound(`Could not find place: ${id}`)
 
@@ -46,6 +52,9 @@ export class WeatherController {
 //   weather: Weather
 // }
 
-// interface CheckQueryParams {
-//   units?: Units
-// }
+interface CheckQueryParams {
+  units?: Units
+  maxTemp: number
+  minTemp: number
+  maxWind: number
+}
