@@ -36,7 +36,7 @@ export class WeatherController {
       units = WEATHER_UNITS_METRIC,
       raw,
     }: CheckQueryParams,
-  ): APIResponse<any> {
+  ): APIResponse<CheckResponseData> {
     if (!isAcceptableUnit(units)) {
       throw badRequest(
         `Unit [${units}] is not valid, must be Metric [si] or Imperial [us]`,
@@ -53,8 +53,6 @@ export class WeatherController {
         `Unable to get required forecast information for ${id}`,
       )
     }
-
-    // TODO: Calculate the score
 
     return response<CheckResponseData>({
       score: calculateScore(weather, { maxTemp, minTemp, maxWind }),

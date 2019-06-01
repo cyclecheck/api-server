@@ -76,9 +76,16 @@ function createReasons(
     text: Reasons.WINDY,
   }
 
+  console.log(`PRECIPPPPP: ${precipProbability}`)
   const hasPrecipitation: Reason = {
-    check: precipProbability > 0,
-    score: precipProbability > 0.3 ? 0.1 : precipProbability * 1.3,
+    check: precipProbability >= 0.3,
+    score: precipProbability * 1.3,
+    text: Reasons.PRECIPITATION,
+  }
+
+  const smallChanceOfPrecipitation: Reason = {
+    check: !!precipProbability && precipProbability < 0.3,
+    score: 0.15,
     text: Reasons.PRECIPITATION,
   }
 
@@ -86,6 +93,8 @@ function createReasons(
     reasons: [isTooCold, isTooHot, isTooWindy, hasPrecipitation].filter(
       reason => reason.check,
     ),
-    warnings: [isCold, isHot, isWindy].filter(warning => warning.check),
+    warnings: [isCold, isHot, isWindy, smallChanceOfPrecipitation].filter(
+      warning => warning.check,
+    ),
   }
 }
