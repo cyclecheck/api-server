@@ -20,5 +20,6 @@ export const isTest = (config: Partial<Config> = {}) =>
   (config.env || process.env.NODE_ENV) === ENV_TEST
 
 export function getEnvFilename() {
-  return process.env.ENV_PATH || resolve(process.cwd(), ENV_FILENAME)
+  const defaultPath = isProd() ? __dirname : process.cwd()
+  return process.env.ENV_PATH || resolve(defaultPath, ENV_FILENAME)
 }

@@ -1,15 +1,21 @@
 {
   "name": "cyclecheck-server",
   "version": "1.0.0-dev",
+  "main": "./dist/main.js",
+  "bin":  "./dist/main.js",
   "description": "Backend API for CycleCheck mobile app.",
-  "author": "Jordon de Hoog",
+  "author": "Jordon de Hoog <jordon.dehoog@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/worldturtlemedia/cyclecheck-server"
+  },
   "license": "MIT",
   "scripts": {
     "commit": "git-cz",
     "build": "tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
-    "start:dev": "rimraf dist/ && concurrently --handle-input \"wait-on dist/main.js && nodemon\" \"tsc -w -p tsconfig.build.json\" ",
+    "start:dev": "rimraf dist/server && concurrently --handle-input \"wait-on dist/main.js && nodemon\" \"tsc -w -p tsconfig.build.json\" ",
     "start:debug": "nodemon --config nodemon-debug.json",
     "prestart:prod": "rimraf dist && npm run build",
     "start:prod": "node dist/main.js",
@@ -18,10 +24,13 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "package:server": "./deploy/package.sh",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "@google/maps": "^0.5.5",
+    "@hapi/joi": "^14.5.3",
     "@nestjs/common": "^6.0.0",
     "@nestjs/core": "^6.0.0",
     "@nestjs/platform-express": "^6.0.0",
@@ -30,7 +39,6 @@
     "darkskyapi-ts": "^1.0.0",
     "dotenv": "^8.0.0",
     "fs-extra": "^8.0.1",
-    "joi": "^14.3.1",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
     "rxjs": "^6.3.3",
@@ -39,6 +47,8 @@
   },
   "devDependencies": {
     "@nestjs/testing": "^6.0.0",
+    "@semantic-release/changelog": "^3.0.2",
+    "@semantic-release/git": "^7.0.8",
     "@types/cache-manager": "^1.2.7",
     "@types/dotenv": "^6.1.1",
     "@types/express": "^4.16.0",
@@ -55,7 +65,9 @@
     "jest": "^23.6.0",
     "lint-staged": "8.1.7",
     "nodemon": "^1.18.9",
+    "pkg": "^4.4.0",
     "prettier": "^1.15.3",
+    "semantic-release": "^15.13.12",
     "supertest": "^3.4.1",
     "ts-jest": "24.0.2",
     "ts-node": "8.1.0",
@@ -70,6 +82,9 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "pkg": {
+    "scripts": "node_modules/cache-manager/lib/stores/*.js"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
@@ -99,5 +114,32 @@
     },
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "release": {
+    "branch": "master",
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/github",
+      "@semantic-release/git"
+    ],
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/git"
+    ],
+    "publish": [
+      {
+        "path": "@semantic-release/github",
+        "assets": [
+          "outputs/*.zip",
+          "CHANGELOG.md"
+        ]
+      }
+    ],
+    "success": [
+      "@semantic-release/github"
+    ],
+    "fail": [
+      "@semantic-release/github"
+    ]
   }
 }
