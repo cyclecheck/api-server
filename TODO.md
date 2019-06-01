@@ -7,10 +7,13 @@ Tasks to do in no specific order
   - Clear places database
   - Check how many API calls were made to darksky
   - clear cache
-- ~~Add caching to weather and location routes~~
-- Calculate the cycle score
 - Create service/module for getting DarkSky stats
-- Add optional param to the `check` endpoint for formatting the units in the response
+- ~~Add caching to weather and location routes~~
+- ~~Calculate the cycle score~~
+- ~~Add optional param to the `check` endpoint for formatting the units in the response~~
 - Add ability to add `day`/`night` to the Display icons
+
+### Deploy
+
 - Create a dockerfile for it
 - Somehow have a webhook or something to trigger a new release on the webserver

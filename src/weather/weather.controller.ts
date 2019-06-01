@@ -5,6 +5,16 @@ import { LocationService } from '../location/location.service'
 import { SessionToken } from '../session/session.decorator'
 import { notFound, serviceUnavailable } from '../util/errors'
 import { APIResponse, badRequest, response } from '../util/http'
+import { Score, ScoreCriteria } from './models/score'
+import {
+  DEFAULT_ACCEPTABLE_MAX_TEMP,
+  DEFAULT_ACCEPTABLE_MAX_WIND,
+  DEFAULT_ACCEPTABLE_MIN_TEMP,
+  Weather,
+} from './models/weather'
+import { formatWeatherUnits, isAcceptableUnit } from './util/format'
+import { calculateScore } from './util/score'
+import { WEATHER_UNITS_METRIC } from './weather.client'
 import { WeatherService } from './weather.service'
 
 @Controller('weather')
@@ -18,10 +28,19 @@ export class WeatherController {
   async checkWeather(
     @Param('id') id: string,
     @SessionToken() token: string,
-    @Query() { maxTemp, minTemp, maxWind, units }: CheckQueryParams,
+    @Query()
+    {
+      maxTemp = DEFAULT_ACCEPTABLE_MAX_TEMP,
+      minTemp = DEFAULT_ACCEPTABLE_MIN_TEMP,
+      maxWind = DEFAULT_ACCEPTABLE_MAX_WIND,
+      units = WEATHER_UNITS_METRIC,
+      raw,
+    }: CheckQueryParams,
   ): APIResponse<any> {
-    if (!maxTemp || !minTemp || !maxWind) {
-      throw badRequest('Required params were not supplied')
+    if (!isAcceptableUnit(units)) {
+      throw badRequest(
+        `Unit [${units}] is not valid, must be Metric [si] or Imperial [us]`,
+      )
     }
 
     const location = await this.locationService.placeDetails(id, token)
@@ -35,26 +54,23 @@ export class WeatherController {
       )
     }
 
-    // TODO: Map the result based on query params
     // TODO: Calculate the score
 
-    return response({ score: -1, weather })
-  }
-
-  @Get('latlng/:lat/:lng')
-  async latlngForecast(@Param('lat') lat: number, @Param('lng') lng: number) {
-    throw Error('Not yet supported')
+    return response<CheckResponseData>({
+      score: calculateScore(weather, { maxTemp, minTemp, maxWind }),
+      weather: raw ? weather : formatWeatherUnits(weather, units),
+      criteria: { units, maxTemp, minTemp, maxWind },
+    })
   }
 }
 
-// interface CheckResponseData {
-//   score: number
-//   weather: Weather
-// }
+interface CheckResponseData {
+  score: Score
+  weather: Weather
+  criteria: CheckQueryParams
+}
 
-interface CheckQueryParams {
+interface CheckQueryParams extends ScoreCriteria {
   units?: Units
-  maxTemp: number
-  minTemp: number
-  maxWind: number
+  raw?: boolean
 }

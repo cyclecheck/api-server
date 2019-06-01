@@ -10,12 +10,16 @@ import {
 import { ConfigService } from '../config/config.service'
 import { createWeatherModel, Weather } from './models/weather'
 
+export const WEATHER_UNITS_METRIC = Units.SI
+
+export const WEATHER_UNITS_IMPERIAL = Units.US
+
 @Injectable()
 export class WeatherClient {
   private readonly logger = new Logger('WeatherClient')
   private readonly client: DarkSky
   private readonly options: DarkSkyOptions = {
-    units: Units.CA,
+    units: Units.SI,
     exclude: [Exclude.MINUTELY, Exclude.FLAGS],
   }
 

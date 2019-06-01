@@ -11,6 +11,7 @@ export function notFound(message: string) {
 export interface Response<T> {
   data: T
   message: string
+  code: number
   metadata: any
 }
 
@@ -18,8 +19,11 @@ export type APIResponse<T> = Promise<Response<T>>
 
 export function response<T>(
   data: T,
-  message: string = 'OK',
-  metadata: any = null,
+  {
+    message = 'OK',
+    metadata = null,
+    code = 200,
+  }: { message?: string; metadata?: any; code?: number } = {},
 ): Response<T> {
-  return { data, message, metadata }
+  return { data, message, code, metadata }
 }

@@ -9,3 +9,7 @@ const ALL_UNITS = [Units.AUTO, Units.CA, Units.SI, Units.UK, Units.US]
 export function isValidUnit(unit: string | Units): boolean {
   return ALL_UNITS.includes(unit as any)
 }
+
+export function mpsToKph(mps: number) {
+  return mps * 3.6
+}

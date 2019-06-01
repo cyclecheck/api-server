@@ -34,7 +34,7 @@ export class LocationController {
     @Query('input') input: string,
     @SessionToken() token: string,
   ): APIResponse<AutocompletePlace[]> {
-    if (!input) return response([], 'Found no matches')
+    if (!input) return response([], { message: 'Found no matches' })
 
     const result = await this.locationService.searchPlaces(input, token)
     return response(result)

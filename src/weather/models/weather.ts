@@ -1,8 +1,29 @@
-import { DataPoint, Forecast } from 'darkskyapi-ts'
+import { Alert, DataPoint, Forecast } from 'darkskyapi-ts'
 
 import { getDisplayIcon } from './icons'
 import { Preciptation } from './precipitation'
 import { Wind, WindModel } from './wind'
+
+/**
+ * The default value for an acceptable minimum temperature, in celcius.
+ *
+ * Used in calculating cyclescore.
+ */
+export const DEFAULT_ACCEPTABLE_MIN_TEMP = 5
+
+/**
+ * The default value for an acceptable max temperature, in celcius.
+ *
+ * Used in calculating cyclescore.
+ */
+export const DEFAULT_ACCEPTABLE_MAX_TEMP = 40
+
+/**
+ * The default value for an acceptable amount of wind speed, in km/h.
+ *
+ * Used in calculating cyclescore.
+ */
+export const DEFAULT_ACCEPTABLE_MAX_WIND = 30
 
 export interface Weather {
   maxTemp: number
@@ -13,6 +34,7 @@ export interface Weather {
   precipitation: Preciptation
   current: WeatherBlock
   hourly: WeatherBlock[]
+  alerts: Alert[]
 }
 
 export interface WeatherBlock {
@@ -45,6 +67,7 @@ export function createWeatherModel(forecast: Forecast): Weather {
     sunset: today.sunsetTime,
     wind: createWind(today),
     precipitation: createPrecipitation(today),
+    alerts: forecast.alerts || [],
   }
 }
 
