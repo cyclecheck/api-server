@@ -26,9 +26,6 @@ if [[ $REQUIRED != $ACTUAL ]]; then
   exit 1
 fi
 
-echo "Ensuring dependencies are installed"
-yarn install > /dev/null
-
 echo "Packaging..."
 npx pkg -t node10-linux -o "$OUTPUT/server" package.json
 

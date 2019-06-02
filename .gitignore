@@ -27,7 +27,7 @@ lerna-debug.log*
 *.sublime-workspace
 
 tmp
-cyclecheck.env
+*cyclecheck.env
 
 # IDE - VSCode
 .vscode/*

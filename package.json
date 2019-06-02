@@ -2,9 +2,10 @@
   "name": "cyclecheck-server",
   "version": "1.0.0-dev",
   "main": "./dist/main.js",
-  "bin":  "./dist/main.js",
+  "bin": "./dist/main.js",
   "description": "Backend API for CycleCheck mobile app.",
   "author": "Jordon de Hoog <jordon.dehoog@gmail.com>",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/worldturtlemedia/cyclecheck-server"
@@ -60,6 +61,7 @@
     "@types/supertest": "^2.0.7",
     "commitizen": "3.1.1",
     "concurrently": "^4.1.0",
+    "crossenv": "^0.0.2-security",
     "cz-conventional-changelog": "2.1.0",
     "husky": "2.3.0",
     "jest": "^24.8.0",
@@ -130,7 +132,7 @@
       {
         "path": "@semantic-release/github",
         "assets": [
-          "outputs/*.zip",
+          "packages/*.zip",
           "CHANGELOG.md"
         ]
       }
