@@ -27,6 +27,9 @@ jobs:
       - run:
           name: Build application
           command: yarn build
+      - store_artifacts:
+          path: ./dist
+          destination: dist
   release:
     docker:
       - image: circleci/node:10.16.0-stretch
@@ -36,6 +39,9 @@ jobs:
       - run: yarn build
       - run: yarn package:server
       - run: yarn semantic-release
+      - store_artifacts:
+          path: ./packages
+          destination: packages
 
 workflows:
   version: 2

@@ -37,6 +37,7 @@ cp package.json $OUTPUT
 cp cyclecheck.sample.env $OUTPUT
 
 echo "Zipping up contents"
-./deploy/zip.sh "$OUTPUT.zip" $OUTPUT
+cd ./packages
+../deploy/zip.sh "./cyclecheck.zip" "./cyclecheck"
 
 echo "Done"
