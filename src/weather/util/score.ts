@@ -76,7 +76,6 @@ function createReasons(
     text: Reasons.WINDY,
   }
 
-  console.log(`PRECIPPPPP: ${precipProbability}`)
   const hasPrecipitation: Reason = {
     check: precipProbability >= 0.3,
     score: precipProbability * 1.3,
