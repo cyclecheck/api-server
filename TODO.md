@@ -20,5 +20,5 @@ Tasks to do in no specific order
 
 ### Deploy
 
-- Create a dockerfile for it
+- ~~Create a dockerfile for it~~
 - Somehow have a webhook or something to trigger a new release on the webserver

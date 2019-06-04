@@ -56,7 +56,9 @@ export function createWeatherModel(forecast: Forecast): Weather {
 
   const today = forecast.daily.data[0]
   const current = createWeatherBlock(forecast.currently)
-  const hourly = forecast.hourly.data.map(hour => createWeatherBlock(hour))
+  const hourly = forecast.hourly.data
+    .slice(0, 24)
+    .map(hour => createWeatherBlock(hour))
 
   return {
     current,

@@ -5,7 +5,7 @@ import { LocationService } from '../location/location.service'
 import { SessionToken } from '../session/session.decorator'
 import { notFound, serviceUnavailable } from '../util/errors'
 import { APIResponse, badRequest, response } from '../util/http'
-import { Score, ScoreCriteria } from './models/score'
+import { ScoreCriteria, Scores } from './models/score'
 import {
   DEFAULT_ACCEPTABLE_MAX_TEMP,
   DEFAULT_ACCEPTABLE_MAX_WIND,
@@ -13,7 +13,7 @@ import {
   Weather,
 } from './models/weather'
 import { formatWeatherUnits, isAcceptableUnit } from './util/format'
-import { calculateScore } from './util/score'
+import { calculateAllScores } from './util/score'
 import { WEATHER_UNITS_METRIC } from './weather.client'
 import { WeatherService } from './weather.service'
 
@@ -55,15 +55,15 @@ export class WeatherController {
     }
 
     return response<CheckResponseData>({
-      score: calculateScore(weather, { maxTemp, minTemp, maxWind }),
       weather: raw ? weather : formatWeatherUnits(weather, units),
+      score: calculateAllScores(weather, { maxTemp, minTemp, maxWind }),
       criteria: { units, maxTemp, minTemp, maxWind },
     })
   }
 }
 
 interface CheckResponseData {
-  score: Score
+  score: Scores
   weather: Weather
   criteria: CheckQueryParams
 }

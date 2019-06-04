@@ -1,8 +1,7 @@
+import { number, object, ObjectSchema, string, validate } from '@hapi/joi'
 import { Injectable, Logger } from '@nestjs/common'
-import { parse } from 'dotenv'
-import { readFileSync } from 'fs'
+import * as dotenv from 'dotenv'
 import { ensureDirSync } from 'fs-extra'
-import { number, object, ObjectSchema, string, validate } from 'joi'
 import { resolve } from 'path'
 
 import { ENV_DEV, ENVS, isDev, isProd, isTest } from './environment'
@@ -14,6 +13,10 @@ export interface Config {
   dataDir: string
   host: string
   port: number
+  admin: {
+    username: string
+    password: string
+  }
 }
 
 @Injectable()
@@ -21,12 +24,16 @@ export class ConfigService {
   private readonly logger = new Logger('ConfigService')
   readonly config: Config
 
-  constructor(filePath: string) {
-    this.logger.log(`Loading config from ${filePath}`)
+  constructor(path: string) {
+    this.logger.log(`Loading config from ${path}`)
 
     try {
-      const config = parse(readFileSync(filePath))
-      this.config = this.mapAndValidateConfig(config as any)
+      const { parsed, error } = dotenv.config({ path })
+      if (error || !parsed) {
+        throw Error(`Unable to parse config at ${path}\n${error}`)
+      }
+
+      this.config = this.mapAndValidateConfig()
 
       this.logger.log('Setting up data directory')
       this.logger.debug(this.config.dataDir)
@@ -50,8 +57,12 @@ export class ConfigService {
     return isTest(this.config)
   }
 
-  private mapAndValidateConfig(envConfig: EnvConfig): Config {
-    const { error, value: validated } = validate(envConfig, EnvConfigSchema)
+  private mapAndValidateConfig(): Config {
+    const { error, value: validated } = validate(
+      process.env as EnvConfig,
+      EnvConfigSchema,
+      { stripUnknown: true },
+    )
 
     if (error) {
       throw new Error(`env validation error: ${error.message}`)
@@ -67,27 +78,39 @@ export class ConfigService {
       env: validEnvConfig.NODE_ENV,
       dataDir: validEnvConfig.DATA_DIR,
       host: validEnvConfig.HOST,
-      port: validEnvConfig.PORT,
+      port: (validEnvConfig.PORT as unknown) as number,
     }
   }
 }
 
-interface EnvConfig {
+interface EnvConfig extends NodeJS.ProcessEnv {
   NODE_ENV: string
   API_KEY_GOOGLE_MAPS: string
   API_KEY_DARKSKY: string
   DATA_DIR: string
   HOST: string
-  PORT: number
+  PORT: string
+  ADMIN_USERNAME: string
+  ADMIN_PASSWORD: string
 }
+
+const DEFAULT_PORT = 3000
+const DEFAULT_HOST = 'localhost'
+const DEFAULT_ADMIN_USERNAME = 'admin'
 
 const EnvConfigSchema: ObjectSchema = object({
   NODE_ENV: string()
     .valid(ENVS)
-    .default(ENV_DEV),
+    .default(process.env.NODE_ENV || ENV_DEV),
   API_KEY_GOOGLE_MAPS: string().required(),
   API_KEY_DARKSKY: string().required(),
-  DATA_DIR: string().default(resolve(process.cwd(), 'data')),
-  HOST: string().default('localhost'),
-  PORT: number().default(3000),
+  DATA_DIR: string().default(
+    process.env.DATA_DIR || resolve(process.cwd(), 'data'),
+  ),
+  HOST: string().default(process.env.HOST || DEFAULT_HOST),
+  PORT: number().default(process.env.PORT || DEFAULT_PORT),
+  ADMIN_USERNAME: string().default(DEFAULT_ADMIN_USERNAME),
+  ADMIN_PASSWORD: string()
+    .length(8)
+    .required(),
 })

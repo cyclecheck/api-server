@@ -8,7 +8,7 @@ async function bootstrap() {
   const logger = new Logger('Bootstrap')
 
   const app = await NestFactory.create(AppModule)
-  const { port, host } = app.get<ConfigService>(ConfigService).config
+  const { port, host } = app.get(ConfigService).config
 
   logger.log(`Starting server: http://${host}:${port}`)
   await app.listen(port, host)

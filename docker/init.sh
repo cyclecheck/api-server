@@ -17,6 +17,7 @@ downloadLatestRelease() {
 
   unzip -o "$OUTPUT/release.zip" -d $OUTPUT
   rm "$OUTPUT/release.zip"
+  cp "$OUTPUT/cyclecheck/cyclecheck.sample.env" /data
   echo $VERSION_REMOTE > "$OUTPUT/version"
 }
 
@@ -44,3 +45,14 @@ fi
 
 version=$(cat "$OUTPUT/version")
 echo "Latest version of $REPO:$version is ready to go!"
+
+# Installing PM2
+which pm2
+hasPm2=$?
+
+if [ $hasPm2 -eq 1 ]; then
+  echo "Installing pm2"
+  npm install -g pm2 > /dev/null
+fi
+
+echo "Finished"

@@ -1,9 +1,19 @@
 import { mpsToKph } from '../../util/misc'
-import { Reason, Reasons, Score, ScoreCriteria } from '../models/score'
-import { Weather } from '../models/weather'
+import { Reason, Reasons, Score, ScoreCriteria, Scores } from '../models/score'
+import { Weather, WeatherBlock } from '../models/weather'
 
 export const TEMPERATURE_WOBBLE = 5 // Degrees
 export const WIND_SPEED_WOBBLE = 10 // km/h
+
+export function calculateAllScores(
+  weather: Weather,
+  options: ScoreCriteria,
+): Scores {
+  return {
+    current: calculateScore(weather.current, options),
+    hourly: weather.hourly.map(hour => calculateScore(hour, options)),
+  }
+}
 
 /**
  * Calculate a cyclescore based on current weather conditions.
@@ -14,16 +24,16 @@ export const WIND_SPEED_WOBBLE = 10 // km/h
  * @param weather The weather forecast.
  * @param options Options for determining score.
  */
-export function calculateScore(
-  weather: Weather,
-  options: ScoreCriteria,
-): Score {
+function calculateScore(weather: WeatherBlock, options: ScoreCriteria): Score {
   const { reasons, warnings } = createReasons(weather, options)
 
-  const score = [...reasons, ...warnings].reduce(
+  let score = [...reasons, ...warnings].reduce(
     (total, reasons) => total - reasons.score,
     1,
   )
+
+  if (score < 0) score = 0
+  if (score > 1) score = 1
 
   return {
     value: score,
@@ -33,11 +43,11 @@ export function calculateScore(
 }
 
 function createReasons(
-  weather: Weather,
+  weather: WeatherBlock,
   { minTemp, maxTemp, maxWind }: ScoreCriteria,
 ) {
-  const currentTemp = Math.round(weather.current.temperature)
-  const windSpeed = mpsToKph(Math.round(weather.current.wind.speed))
+  const currentTemp = Math.round(weather.temperature)
+  const windSpeed = mpsToKph(Math.round(weather.wind.speed))
   const precipProbability = weather.precipitation.probability
 
   const isTooCold: Reason = {
@@ -88,12 +98,22 @@ function createReasons(
     text: Reasons.PRECIPITATION,
   }
 
+  const uvIndex: Reason = {
+    check: weather.uvIndex >= 7,
+    score: 0,
+    text: Reasons.UV_INDEX,
+  }
+
   return {
     reasons: [isTooCold, isTooHot, isTooWindy, hasPrecipitation].filter(
       reason => reason.check,
     ),
-    warnings: [isCold, isHot, isWindy, smallChanceOfPrecipitation].filter(
-      warning => warning.check,
-    ),
+    warnings: [
+      isCold,
+      isHot,
+      isWindy,
+      smallChanceOfPrecipitation,
+      uvIndex,
+    ].filter(warning => warning.check),
   }
 }

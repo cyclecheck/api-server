@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { join } from 'path'
 
+import { AdminEntity } from '../admin/entity/admin.entity'
+import { TokenEntity } from '../admin/entity/token.entity'
 import { ConfigModule } from '../config/config.module'
 import { ConfigService } from '../config/config.service'
 import { PlaceEntity } from '../location/place.entity'
@@ -22,7 +24,7 @@ export const DATABASE_NAME = 'cyclecheck.db'
           database: join(configService.config.dataDir, dbName),
           logging: configService.isDev,
           synchronize: true,
-          entities: [PlaceEntity],
+          entities: [AdminEntity, TokenEntity, PlaceEntity],
         }
       },
       inject: [ConfigService],

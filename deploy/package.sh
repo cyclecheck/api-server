@@ -3,6 +3,13 @@
 CWD="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 PARENT="$(cd $CWD/.. >/dev/null 2>&1 && pwd)"
 
+PLATFORM=linux
+PKG_OS=$PLATFORM
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  PLATFORM=darwin
+  PKG_OS=macos
+fi
+
 OUTPUT="$PARENT/packages/cyclecheck"
 
 rm -r $OUTPUT "$OUTPUT.zip"
@@ -27,10 +34,10 @@ if [[ $REQUIRED != $ACTUAL ]]; then
 fi
 
 echo "Packaging..."
-npx pkg -t node10-linux -o "$OUTPUT/server" package.json
+npx pkg -t "node10-$PKG_OS" -o "$OUTPUT/server" package.json
 
 echo "Copying sqlite3 native code"
-cp node_modules/sqlite3/lib/binding/node-v64-linux-x64/node_sqlite3.node $OUTPUT
+cp node_modules/sqlite3/lib/binding/*$PLATFORM-x64/node_sqlite3.node $OUTPUT
 
 echo "Copying required files"
 cp package.json $OUTPUT

@@ -662,6 +662,18 @@
   resolved "https://registry.yarnpkg.com/@types/google__maps/-/google__maps-0.5.5.tgz#e3dad3ee96195d3d97fdcc20c24f1be279671e0a"
   integrity sha512-KfTC1mt5gyoCKFG7xM+tTp5ZALBUxpsKd1KnrpZPtBXXQRsXqNh+/1j5lmDu/SFqwBENQrm28+4wX/oeJlF6Zg==
 
+"@types/hapi__joi@*", "@types/hapi__joi@^15.0.1":
+  version "15.0.1"
+  resolved "https://registry.yarnpkg.com/@types/hapi__joi/-/hapi__joi-15.0.1.tgz#6038375074af792b765e34dc799c83d30a406fbe"
+  integrity sha512-uqH3kTO1nrhe+Pbq+dQKrulrfscRPjFZNv9UWA3FupJZBHw+miT7yiV6C8A80YLnn0o6zbgTProncBb3d7QohA==
+  dependencies:
+    "@types/hapi__joi" "*"
+
+"@types/hat@^0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@types/hat/-/hat-0.0.0.tgz#80e46f8c8392591bc77439999175eb12e6b322b5"
+  integrity sha512-JvxqrU6dR+eOfkzAhnsQptD/MuygWetoGKIq/amqJehtPQYdwOmHekDnf2hhFn2h8yGooOe6MInj6oC/qolgzA==
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.1.tgz#42995b446db9a48a11a07ec083499a860e9138ff"
@@ -693,11 +705,6 @@
   integrity sha512-3m6RPnO35r7Dg+uMLj1+xfZaOgIHHHut61djNjzwExXN4/Pm9has9C6I1KMYSfz7mahDhWUOVg4HW/nZdv5Pww==
   dependencies:
     "@types/jest-diff" "*"
-
-"@types/joi@^14.3.3":
-  version "14.3.3"
-  resolved "https://registry.yarnpkg.com/@types/joi/-/joi-14.3.3.tgz#f251aa8150fc0b6a7ce9feab21802a28473de335"
-  integrity sha512-6gAT/UkIzYb7zZulAbcof3lFxpiD5EI6xBeTvkL1wYN12pnFQ+y/+xl9BvnVgxkmaIDN89xWhGZLD9CvuOtZ9g==
 
 "@types/json5@^0.0.29":
   version "0.0.29"
@@ -3310,6 +3317,11 @@ has@^1.0.1, has@^1.0.3:
   integrity sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
   dependencies:
     function-bind "^1.1.1"
+
+hat@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/hat/-/hat-0.0.3.tgz#bb014a9e64b3788aed8005917413d4ff3d502d8a"
+  integrity sha1-uwFKnmSzeIrtgAWRdBPU/z1QLYo=
 
 highlight.js@^9.6.0:
   version "9.15.6"

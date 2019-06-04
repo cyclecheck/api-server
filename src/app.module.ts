@@ -1,6 +1,7 @@
 import { Logger, Module } from '@nestjs/common'
 import { APP_GUARD } from '@nestjs/core'
 
+import { AppController } from './app.controller'
 import { ConfigModule } from './config/config.module'
 import { ConfigService } from './config/config.service'
 import { DatabaseModule } from './database/database.module'
@@ -11,6 +12,7 @@ import { WeatherModule } from './weather/weather.module'
 
 @Module({
   imports: [ConfigModule, DatabaseModule, WeatherModule, LocationModule],
+  controllers: [AppController],
   providers: [
     {
       provide: APP_GUARD,
