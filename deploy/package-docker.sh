@@ -10,7 +10,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   PKG_OS=macos
 fi
 
-OUTPUT="$PARENT/packages/cyclecheck"
+OUTPUT="$PARENT/packages/cyclecheck-api-docker"
 
 rm -r $OUTPUT "$OUTPUT.zip"
 
@@ -34,17 +34,16 @@ if [[ $REQUIRED != $ACTUAL ]]; then
 fi
 
 echo "Packaging..."
-npx pkg -t "node10-$PKG_OS" -o "$OUTPUT/server" package.json
+npx pkg -t "node10-$PKG_OS" -o "$OUTPUT/cyclecheck-api" package.json
 
 echo "Copying sqlite3 native code"
 cp node_modules/sqlite3/lib/binding/*$PLATFORM-x64/node_sqlite3.node $OUTPUT
 
 echo "Copying required files"
-cp package.json $OUTPUT
 cp cyclecheck.sample.env $OUTPUT
 
 echo "Zipping up contents"
 cd ./packages
-../deploy/zip.sh "./cyclecheck.zip" "./cyclecheck"
+../deploy/zip.sh "./cyclecheck-api-docker.zip" "./cyclecheck-api-docker"
 
 echo "Done"

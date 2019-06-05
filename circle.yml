@@ -36,8 +36,7 @@ jobs:
     steps:
       - checkout
       - run: yarn install
-      - run: yarn build
-      - run: yarn package:server
+      - run: yarn package
       - run: yarn semantic-release
       - store_artifacts:
           path: ./packages
