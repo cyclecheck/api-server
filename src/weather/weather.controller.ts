@@ -2,7 +2,7 @@ import { Controller, Get, Param, Query } from '@nestjs/common'
 import { Units } from 'darkskyapi-ts'
 
 import { LocationService } from '../location/location.service'
-import { SessionToken } from '../session/session.decorator'
+import { SessionRequired, SessionToken } from '../session/session.decorator'
 import { notFound, serviceUnavailable } from '../util/errors'
 import { APIResponse, badRequest, response } from '../util/http'
 import { ScoreCriteria, Scores } from './models/score'
@@ -18,6 +18,7 @@ import { WEATHER_UNITS_METRIC } from './weather.client'
 import { WeatherService } from './weather.service'
 
 @Controller('weather')
+@SessionRequired()
 export class WeatherController {
   constructor(
     private readonly locationService: LocationService,

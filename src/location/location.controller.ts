@@ -1,11 +1,12 @@
 import { Controller, Get, Param, Query } from '@nestjs/common'
 
-import { SessionToken } from '../session/session.decorator'
+import { SessionRequired, SessionToken } from '../session/session.decorator'
 import { APIResponse, badRequest, notFound, response } from '../util/http'
 import { AutocompletePlace, LatLng, LocationService } from './location.service'
 import { Place } from './place.entity'
 
 @Controller('location')
+@SessionRequired()
 export class LocationController {
   constructor(private readonly locationService: LocationService) {}
 

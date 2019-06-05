@@ -1,8 +1,11 @@
-import { createParamDecorator, SetMetadata } from '@nestjs/common'
+import { createParamDecorator, SetMetadata, UseGuards } from '@nestjs/common'
 
-import { SESSION_HEADER as SESSION_TOKEN_HEADER } from './session.guard'
+import {
+  SESSION_HEADER as SESSION_TOKEN_HEADER,
+  SessionGuard,
+} from './session.guard'
 
-export const IGNORE_SESSION = 'ignore_auth'
+export const IGNORE_SESSION = 'ignore_session'
 
 /**
  * Each request made to the api should contain this 'auth' session token.
@@ -19,4 +22,6 @@ export const SessionToken = createParamDecorator(
   (_, req) => req.headers[SESSION_TOKEN_HEADER],
 )
 
-export const IgnoreAuth = () => SetMetadata(IGNORE_SESSION, true)
+export const IgnoreSession = () => SetMetadata(IGNORE_SESSION, true)
+
+export const SessionRequired = () => UseGuards(SessionGuard)

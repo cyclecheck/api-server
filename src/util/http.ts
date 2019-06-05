@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus } from '@nestjs/common'
+import { ExecutionContext, HttpException, HttpStatus } from '@nestjs/common'
 
 export function badRequest(message: string) {
   return new HttpException(message, HttpStatus.BAD_GATEWAY)
@@ -26,4 +26,12 @@ export function response<T>(
   }: { message?: string; metadata?: any; code?: number } = {},
 ): Response<T> {
   return { data, message, code, metadata }
+}
+
+export function headers(
+  context: ExecutionContext,
+  key: string,
+): string | undefined {
+  const headers = context.switchToHttp().getRequest().headers
+  return headers[key]
 }

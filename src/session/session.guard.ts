@@ -8,6 +8,8 @@ import { Reflector } from '@nestjs/core'
 
 import { IGNORE_SESSION } from './session.decorator'
 
+export const SESSION_HEADER = 'session'
+
 @Injectable()
 export class SessionGuard implements CanActivate {
   constructor(private readonly reflector: Reflector) {}
@@ -29,5 +31,3 @@ export class SessionGuard implements CanActivate {
     return true
   }
 }
-
-export const SESSION_HEADER = 'session'

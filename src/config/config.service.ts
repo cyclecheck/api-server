@@ -79,6 +79,10 @@ export class ConfigService {
       dataDir: validEnvConfig.DATA_DIR,
       host: validEnvConfig.HOST,
       port: (validEnvConfig.PORT as unknown) as number,
+      admin: {
+        username: validEnvConfig.ADMIN_USERNAME,
+        password: validEnvConfig.ADMIN_PASSWORD,
+      },
     }
   }
 }

@@ -1,24 +1,23 @@
 import { Logger, Module } from '@nestjs/common'
-import { APP_GUARD } from '@nestjs/core'
 
+import { AdminModule } from './admin/admin.module'
 import { AppController } from './app.controller'
 import { ConfigModule } from './config/config.module'
 import { ConfigService } from './config/config.service'
 import { DatabaseModule } from './database/database.module'
 import { LocationModule } from './location/location.module'
-import { SessionGuard } from './session/session.guard'
 import { prettyPrint } from './util/misc'
 import { WeatherModule } from './weather/weather.module'
 
 @Module({
-  imports: [ConfigModule, DatabaseModule, WeatherModule, LocationModule],
-  controllers: [AppController],
-  providers: [
-    {
-      provide: APP_GUARD,
-      useClass: SessionGuard,
-    },
+  imports: [
+    ConfigModule,
+    DatabaseModule,
+    AdminModule,
+    WeatherModule,
+    LocationModule,
   ],
+  controllers: [AppController],
 })
 export class AppModule {
   private readonly logger = new Logger('AppModule')
