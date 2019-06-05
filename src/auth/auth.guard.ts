@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common'
 import { Reflector } from '@nestjs/core'
 
-import { headers } from '../../util/http'
+import { headers } from '../util/http'
 import { IGNORE_AUTH } from './auth.decorator'
 import { AuthService } from './auth.service'
 

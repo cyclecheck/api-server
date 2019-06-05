@@ -1,19 +1,19 @@
 import { Module } from '@nestjs/common'
-import { TypeOrmModule } from '@nestjs/typeorm'
 
+import { AuthModule } from '../auth/auth.module'
 import { ConfigModule } from '../config/config.module'
+import { LocationModule } from '../location/location.module'
+import { WeatherModule } from '../weather/weather.module'
+import { AdminLocationController } from './admin-location.controller'
+import { AdminWeatherController } from './admin-weather.controller'
 import { AdminController } from './admin.controller'
-import { AdminEntity } from './admin.entity'
-import { AdminService } from './admin.service'
-import { AuthController } from './auth/auth.controller'
-import { AuthService } from './auth/auth.service'
-import { TokenEntity } from './token/token.entity'
-import { TokenService } from './token/token.service'
 
 @Module({
-  imports: [ConfigModule, TypeOrmModule.forFeature([AdminEntity, TokenEntity])],
-  controllers: [AdminController, AuthController],
-  providers: [AdminService, TokenService, AuthService],
-  exports: [AuthService],
+  imports: [ConfigModule, AuthModule, LocationModule, WeatherModule],
+  controllers: [
+    AdminController,
+    AdminLocationController,
+    AdminWeatherController,
+  ],
 })
 export class AdminModule {}

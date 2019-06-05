@@ -1,75 +1,95 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# CycleCheck API Server
 
-[travis-image]: https://api.travis-ci.org/nestjs/nest.svg?branch=master
-[travis-url]: https://travis-ci.org/nestjs/nest
-[linux-image]: https://img.shields.io/travis/nestjs/nest/master.svg?label=linux
-[linux-url]: https://travis-ci.org/nestjs/nest
-  
-  <p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications, heavily inspired by <a href="https://angular.io" target="blank">Angular</a>.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/dm/@nestjs/core.svg" alt="NPM Downloads" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://api.travis-ci.org/nestjs/nest.svg?branch=master" alt="Travis" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://img.shields.io/travis/nestjs/nest/master.svg?label=linux" alt="Linux" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#5" alt="Coverage" /></a>
-<a href="https://gitter.im/nestjs/nestjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge"><img src="https://badges.gitter.im/nestjs/nestjs.svg" alt="Gitter" /></a>
-<a href="https://opencollective.com/nest#backer"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec"><img src="https://img.shields.io/badge/Donate-PayPal-dc3d53.svg"/></a>
-  <a href="https://twitter.com/nestframework"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+API server backend for the [CycleCheck](https://github.com/cyclecheck/cyclecheck) app, powered by [Nest](https://nestjs.com).
 
-## Description
+![CircleCI branch](https://img.shields.io/circleci/project/github/cyclecheck/api-server/master.svg?label=release%20build) ![CircleCI (all branches)](https://img.shields.io/circleci/project/github/cyclecheck/api-server.svg) ![GitHub](https://img.shields.io/github/license/cyclecheck/api-server-docker.svg)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+![GitHub release](https://img.shields.io/github/release/cyclecheck/api-server-docker.svg?label=gh-release) ![GitHub commits since latest release](https://img.shields.io/github/commits-since/cyclecheck/api-server-docker/latest/master.svg)
+
+[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/) [![dependencies Status](https://david-dm.org/cyclecheck/api-server/status.svg)](https://david-dm.org/cyclecheck/api-server) [![devDependencies Status](https://david-dm.org/cyclecheck/api-server/dev-status.svg)](https://david-dm.org/cyclecheck/api-server?type=dev)
+
+CycleCheck is an app for determining whether or not you should ride your bike. It gets the current weather forecast, and calculates a 'CycleScore' based on weather conditions and your preferences.
+
+This repository houses the API server, written in TypeScript and [Nest](https://nestjs.com). It is designed to be run inside of a Docker container, and there is a prebuilt Docker image [jordond/cyclecheck-api](https://cloud.docker.com/u/jordond/repository/docker/jordond/cyclecheck-api) and the matching [repo](https://github.com/cyclecheck/api-server-docker). Instructions for running in a docker container can be found [here](https://github.com/cyclecheck/api-server-docker/blob/master/README.md#running).
+
+It can also be ran using Node, see instructions below.
 
 ## Installation
 
-```bash
-$ npm install
-```
+This repository creates a single bundled executable using [pkg](). Running this requires a very specific version of Node, and if you don't plan on using the Docker container, it is recommended to use the Node method instead.
 
-## Running the app
+### Docker
 
-```bash
-# development
-$ npm run start
+See [here](https://github.com/cyclecheck/api-server-docker/blob/master/README.md#running).
 
-# watch mode
-$ npm run start:dev
+### Node
 
-# production mode
-$ npm run start:prod
-```
+1. Download the latest `cyclecheck-api` [release](https://github.com/cyclecheck/api-server/releases).
+1. Unzip `cyclecheck-api.zip`.
+1. Change into the directory.
+1. Run `npm install --production`
 
-## Test
+## Setup
 
-```bash
-# unit tests
-$ npm run test
+### Prerequisites
 
-# e2e tests
-$ npm run test:e2e
+The following is required in order to run the api.
 
-# test coverage
-$ npm run test:cov
-```
+- Google Places API key, see [here](https://developers.google.com/places/web-service/get-api-key)
+- DarkSky.net API key, see [here](https://darksky.net/dev/account)
 
-## Support
+These must be saved into your `cyclecheck.env` file, see [sample config](https://github.com/cyclecheck/api-server/blob/master/cyclecheck.sample.env).
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Config
 
-## Stay in touch
+CycleCheck-API expects a `cyclecheck.env` file in order to run. See the [sample config](https://github.com/cyclecheck/api-server/blob/master/cyclecheck.sample.env) for more information.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+It must be placed in `process.cwd()` or you can set the environment variable `ENV_PATH`.
+
+## Running
+
+### Docker
+
+1. When creating the docker container, make sure you mapped the `/data` directory to a folder on your machine, and map a port.
+1. Add your `cyclecheck.env` to the mapped `/data` folder.
+1. Start your container.
+1. API server will be available at `127.0.0.1:<PORT>` where `<PORT>` is the mapped port you chose.
+
+### Using Node
+
+1. Follow the Installation steps above.
+1. Change into the `cyclecheck-api` folder.
+1. Create your `cyclecheck.env` file.
+1. Run `node dist/main.js`.
+1. API will be available at `localhost:3000` by default.
+   - Change `PORT` in the config file to change the port.
+
+## Contributing
+
+See [CONTRIBUTING](https://github.com/cyclecheck/api-server/blob/master/.github/CONTRIBUTING.md).
 
 ## License
 
-  Nest is [MIT licensed](LICENSE).
+```text
+MIT License
+
+Copyright (c) 2019 CycleCheck
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common'
 
-import { AdminUser } from '../admin.entity'
-import { AdminService } from '../admin.service'
-import { Token } from '../token/token.entity'
-import { TokenService } from '../token/token.service'
+import { Token } from './token/token.entity'
+import { TokenService } from './token/token.service'
+import { AdminUser } from './user/user.entity'
+import { UserService } from './user/user.service'
 
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly adminService: AdminService,
+    private readonly adminService: UserService,
     private readonly tokenService: TokenService,
   ) {}
 

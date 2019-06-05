@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv'
 import { ensureDirSync } from 'fs-extra'
 import { resolve } from 'path'
 
-import { ENV_DEV, ENVS, isDev, isProd, isTest } from './environment'
+import { ENV_PROD, ENVS, isDev, isProd, isTest } from './environment'
 
 export interface Config {
   googleMapsApi: string
@@ -105,7 +105,7 @@ const DEFAULT_ADMIN_USERNAME = 'admin'
 const EnvConfigSchema: ObjectSchema = object({
   NODE_ENV: string()
     .valid(ENVS)
-    .default(process.env.NODE_ENV || ENV_DEV),
+    .default(process.env.NODE_ENV || ENV_PROD),
   API_KEY_GOOGLE_MAPS: string().required(),
   API_KEY_DARKSKY: string().required(),
   DATA_DIR: string().default(

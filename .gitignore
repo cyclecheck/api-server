@@ -37,3 +37,4 @@ tmp
 !.vscode/extensions.json
 
 packages/
+CHANGELOG.md

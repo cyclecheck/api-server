@@ -5,9 +5,9 @@ import { response } from './util/http'
 
 @Controller()
 export class AppController {
-  @Get('/health')
+  @Get()
   @IgnoreSession()
   heartbeat() {
-    return response('I\'m alive!')
+    return response('You\'ve reached the CycleCheck API')
   }
 }

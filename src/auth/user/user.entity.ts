@@ -1,6 +1,6 @@
 import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
-import { hashString } from '../util/crypto'
+import { hashString } from '../../util/crypto'
 
 export interface AdminUser {
   username: string
@@ -8,7 +8,7 @@ export interface AdminUser {
 }
 
 @Entity()
-export class AdminEntity implements AdminUser {
+export class AdminUserEntity implements AdminUser {
   @PrimaryGeneratedColumn()
   id!: number
 

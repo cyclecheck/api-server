@@ -24,6 +24,11 @@ export class TokenService {
     return token
   }
 
+  async list(): Promise<Token[]> {
+    const entities = await this.tokenRepository.find()
+    return entities.map(({ key }) => ({ key }))
+  }
+
   async revoke(token: string): Promise<boolean> {
     const found = await this.find(token)
     if (!found) return false

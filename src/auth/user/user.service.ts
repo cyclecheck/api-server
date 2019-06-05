@@ -2,14 +2,14 @@ import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 
-import { ConfigService } from '../config/config.service'
-import { AdminEntity, AdminUser } from './admin.entity'
+import { ConfigService } from '../../config/config.service'
+import { AdminUser, AdminUserEntity } from './user.entity'
 
 @Injectable()
-export class AdminService {
+export class UserService {
   constructor(
-    @InjectRepository(AdminEntity)
-    private readonly adminRepository: Repository<AdminEntity>,
+    @InjectRepository(AdminUserEntity)
+    private readonly adminRepository: Repository<AdminUserEntity>,
     private readonly configService: ConfigService,
   ) {}
 
@@ -19,17 +19,16 @@ export class AdminService {
     return admin.compare(user)
   }
 
-  private async getAdmin(): Promise<AdminEntity> {
+  private async getAdmin(): Promise<AdminUserEntity> {
     const { username, password } = this.configService.config.admin
     const admin = await this.findAdmin()
     if (admin) return admin
 
-    await this.adminRepository.insert(new AdminEntity(username, password))
+    await this.adminRepository.insert(new AdminUserEntity(username, password))
     return this.findAdmin() as any
   }
 
-  private findAdmin() {
-    const { username } = this.configService.config.admin
-    return this.adminRepository.findOne({ where: { username } })
+  private async findAdmin() {
+    return (await this.adminRepository.find())[0]
   }
 }

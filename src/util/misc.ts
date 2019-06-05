@@ -13,3 +13,7 @@ export function isValidUnit(unit: string | Units): boolean {
 export function mpsToKph(mps: number) {
   return mps * 3.6
 }
+
+export function unixToDate(timestamp: number): Date {
+  return new Date(timestamp * 1000)
+}

@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common'
 
-import { MemoryCache, minutes } from '../util/cache'
+import { Invalidate, MemoryCache, minutes } from '../util/cache'
 import { WeatherClient } from './weather.client'
 
 @Injectable()
-export class WeatherService {
+export class WeatherService implements Invalidate {
   private readonly cache = new MemoryCache({ ttl: minutes(30), max: 1000 })
 
   constructor(private readonly weatherClient: WeatherClient) {}
@@ -13,5 +13,9 @@ export class WeatherService {
     return this.cache.getOrSet(placeId, () =>
       this.weatherClient.getForecast(lat, lng),
     )
+  }
+
+  invalidate() {
+    this.cache.clear()
   }
 }

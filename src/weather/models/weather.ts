@@ -1,5 +1,6 @@
 import { Alert, DataPoint, Forecast } from 'darkskyapi-ts'
 
+import { unixToDate } from '../../util/misc'
 import { getDisplayIcon } from './icons'
 import { Preciptation } from './precipitation'
 import { Wind, WindModel } from './wind'
@@ -55,10 +56,16 @@ export function createWeatherModel(forecast: Forecast): Weather {
   }
 
   const today = forecast.daily.data[0]
-  const current = createWeatherBlock(forecast.currently)
+
+  const now = new Date()
+  const sunrise = unixToDate(today.sunriseTime)
+  const sunset = unixToDate(today.sunsetTime)
+  const isNight = now <= sunrise && now >= sunset
+
+  const current = createWeatherBlock(forecast.currently, isNight)
   const hourly = forecast.hourly.data
     .slice(0, 24)
-    .map(hour => createWeatherBlock(hour))
+    .map(hour => createWeatherBlock(hour, isNight))
 
   return {
     current,
@@ -73,7 +80,10 @@ export function createWeatherModel(forecast: Forecast): Weather {
   }
 }
 
-function createWeatherBlock(datapoint: DataPoint): WeatherBlock {
+function createWeatherBlock(
+  datapoint: DataPoint,
+  isNight: boolean,
+): WeatherBlock {
   return {
     forecastedTime: datapoint.time,
     temperature: datapoint.temperature!,
@@ -83,7 +93,7 @@ function createWeatherBlock(datapoint: DataPoint): WeatherBlock {
     uvIndex: datapoint.uvIndex!,
     wind: createWind(datapoint),
     precipitation: createPrecipitation(datapoint),
-    weatherType: getDisplayIcon(datapoint.icon!),
+    weatherType: getDisplayIcon(datapoint.icon!, isNight),
   }
 }
 

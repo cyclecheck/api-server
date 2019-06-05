@@ -3,12 +3,12 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 
 import { ConfigService } from '../config/config.service'
-import { days, MemoryCache } from '../util/cache'
+import { days, Invalidate, MemoryCache } from '../util/cache'
 import { LocationClient } from './location.client'
 import { Place, PlaceEntity } from './place.entity'
 
 @Injectable()
-export class LocationService {
+export class LocationService implements Invalidate {
   private readonly cache = new MemoryCache({ ttl: days(30), max: 1000 })
   private readonly logger = new Logger('LocationService')
   private readonly locationClient: LocationClient
@@ -21,9 +21,21 @@ export class LocationService {
     this.locationClient = new LocationClient(googleMapsApi)
   }
 
+  listPlaces(): Promise<Place[]> {
+    return this.placeRepository.find()
+  }
+
+  async remove(placeId: string): Promise<boolean> {
+    const found = await this.placeRepository.findOne(placeId)
+    if (!found) return false
+
+    await this.placeRepository.remove(found)
+    return true
+  }
+
   async decodeLatLng(lat: number, lng: number): Promise<Place> {
     const result = await this.locationClient.reverseGeocode(lat, lng)
-    await this.placeRepository.insert(result)
+    await this.placeRepository.save(result)
 
     return result
   }
@@ -59,6 +71,14 @@ export class LocationService {
     }
 
     return null
+  }
+
+  clearDatabase() {
+    return this.placeRepository.clear()
+  }
+
+  invalidate() {
+    this.cache.clear()
   }
 }
 

@@ -1,11 +1,10 @@
-import { Body, Controller, Get, Post } from '@nestjs/common'
+import { Body, Controller, Delete, Post } from '@nestjs/common'
 
-import { badRequest } from '../../util/errors'
-import { response } from '../../util/http'
-import { AdminUser } from '../admin.entity'
-import { Authenticated } from '../auth/auth.decorator'
-import { AuthToken, IgnoreAuth } from './auth.decorator'
+import { badRequest } from '../util/errors'
+import { response } from '../util/http'
+import { Authenticated, AuthToken, IgnoreAuth } from './auth.decorator'
 import { AuthService } from './auth.service'
+import { AdminUser } from './user/user.entity'
 
 @Controller('auth')
 @Authenticated()
@@ -15,13 +14,17 @@ export class AuthController {
   @Post()
   @IgnoreAuth()
   async login(@Body() body: AdminUser) {
+    if (!body || !body.username || !body.password) {
+      throw badRequest('Invalid user payload')
+    }
+
     const result = await this.authService.login(body)
     if (!result) throw badRequest('Invalid credentials')
 
     return response({ token: result.key })
   }
 
-  @Get('logout')
+  @Delete()
   async logout(@AuthToken() token: string) {
     const result = await this.authService.revoke(token)
     return response({ success: result })

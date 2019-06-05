@@ -22,8 +22,37 @@ const DISPLAY_ICON_MAP = {
   [WeatherIcon.THUNDERSTORM]: 'wi-thunderstorm',
   [WeatherIcon.TORNADO]: 'wi-tornado',
   [WeatherIcon.UNKNOWN]: 'wi-na',
+  WIND_DAY: 'wi-day-windy',
+  FOG_NIGHT: 'wi-night-fog',
 }
 
-export function getDisplayIcon(icon: WeatherIcon) {
-  return DISPLAY_ICON_MAP[icon] || DISPLAY_ICON_MAP[WeatherIcon.UNKNOWN]
+const DAY_MODE = 'day'
+const NIGHT_MODE = 'night-alt'
+
+const NO_MODIFIER = [
+  DISPLAY_ICON_MAP[WeatherIcon.CLEAR_DAY],
+  DISPLAY_ICON_MAP[WeatherIcon.CLEAR_NIGHT],
+  DISPLAY_ICON_MAP[WeatherIcon.PARTLY_CLOUDY_DAY],
+  DISPLAY_ICON_MAP[WeatherIcon.PARTLY_CLOUDY_NIGHT],
+  DISPLAY_ICON_MAP[WeatherIcon.TORNADO],
+  DISPLAY_ICON_MAP[WeatherIcon.UNKNOWN],
+]
+
+export function getDisplayIcon(icon: WeatherIcon, isNight: boolean) {
+  if (icon === WeatherIcon.WIND) {
+    return isNight
+      ? DISPLAY_ICON_MAP[WeatherIcon.WIND]
+      : DISPLAY_ICON_MAP.WIND_DAY
+  } else if (icon === WeatherIcon.FOG) {
+    return isNight
+      ? DISPLAY_ICON_MAP.FOG_NIGHT
+      : DISPLAY_ICON_MAP[WeatherIcon.FOG]
+  }
+
+  const displayIcon =
+    DISPLAY_ICON_MAP[icon] || DISPLAY_ICON_MAP[WeatherIcon.UNKNOWN]
+
+  if (NO_MODIFIER.includes(displayIcon)) return displayIcon
+
+  return displayIcon.replace('wi-', `wi-${isNight ? NIGHT_MODE : DAY_MODE}-`)
 }

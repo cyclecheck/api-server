@@ -10,5 +10,6 @@ import { WeatherService } from './weather.service'
   imports: [ConfigModule, LocationModule],
   providers: [WeatherService, WeatherClient],
   controllers: [WeatherController],
+  exports: [WeatherService],
 })
 export class WeatherModule {}

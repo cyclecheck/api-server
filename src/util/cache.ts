@@ -10,7 +10,6 @@ const DEFAULT_OPTIONS: MemoryCacheConfig = {
   max: 1000,
 }
 
-// TODO Convert to provider
 export class MemoryCache {
   private options: MemoryCacheConfig
   private cache: Cache
@@ -47,6 +46,14 @@ export class MemoryCache {
 
     return result
   }
+
+  clear() {
+    this.cache = caching({ ...this.options, store: 'memory' })
+  }
+}
+
+export interface Invalidate {
+  invalidate: () => void
 }
 
 export function seconds(n: number) {

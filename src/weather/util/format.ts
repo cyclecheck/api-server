@@ -5,21 +5,25 @@ import { Weather, WeatherBlock } from '../models/weather'
 import { WEATHER_UNITS_IMPERIAL, WEATHER_UNITS_METRIC } from '../weather.client'
 
 export function isAcceptableUnit(units: Units) {
-  return units === WEATHER_UNITS_IMPERIAL || units === WEATHER_UNITS_METRIC
+  const lowerCase = units.toLowerCase()
+  return (
+    lowerCase === WEATHER_UNITS_IMPERIAL || lowerCase === WEATHER_UNITS_METRIC
+  )
 }
 
 export function formatWeatherUnits(weather: Weather, units: Units): Weather {
+  let unitsToUse = units.toLowerCase() as Units
   if (!isAcceptableUnit(units)) {
-    units = WEATHER_UNITS_METRIC
+    unitsToUse = WEATHER_UNITS_METRIC
   }
 
   const { maxTemp, minTemp, current, hourly } = weather
   return {
     ...weather,
-    maxTemp: formatTemperature(maxTemp, units),
-    minTemp: formatTemperature(minTemp, units),
-    current: formatWeatherBlock(current, units),
-    hourly: hourly.map(hour => formatWeatherBlock(hour, units)),
+    maxTemp: formatTemperature(maxTemp, unitsToUse),
+    minTemp: formatTemperature(minTemp, unitsToUse),
+    current: formatWeatherBlock(current, unitsToUse),
+    hourly: hourly.map(hour => formatWeatherBlock(hour, unitsToUse)),
   }
 }
 
