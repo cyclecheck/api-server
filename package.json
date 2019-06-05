@@ -68,7 +68,7 @@
     "concurrently": "4.1.0",
     "crossenv": "0.0.2-security",
     "cz-conventional-changelog": "2.1.0",
-    "husky": "2.3.0",
+    "husky": "2.4.0",
     "jest": "24.8.0",
     "lint-staged": "8.1.7",
     "nodemon": "1.19.1",
