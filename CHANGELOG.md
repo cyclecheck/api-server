@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/worldturtlemedia/cyclecheck-server/compare/v1.0.0...v1.1.0) (2019-06-05)
+
+
+### Features
+
+* **admin:** add admin routes locked behind an auth strategy ([8f840a3](https://github.com/worldturtlemedia/cyclecheck-server/commit/8f840a3))
+
 # 1.0.0 (2019-06-02)
 
 ### Bug Fixes
