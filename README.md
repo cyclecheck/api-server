@@ -16,7 +16,7 @@ It can also be ran using Node, see instructions below.
 
 ## Installation
 
-This repository creates a single bundled executable using [pkg](). Running this requires a very specific version of Node, and if you don't plan on using the Docker container, it is recommended to use the Node method instead.
+This repository creates a single bundled executable using [pkg](https://github.com/zeit/pkg). Running this requires a very specific version of Node, and if you don't plan on using the Docker container, it is recommended to use the Node method instead.
 
 ### Docker
 
@@ -24,10 +24,19 @@ See [here](https://github.com/cyclecheck/api-server-docker/blob/master/README.md
 
 ### Node
 
-1. Download the latest `cyclecheck-api` [release](https://github.com/cyclecheck/api-server/releases).
+1. Download the latest `cyclecheck-api` from the [releases](https://github.com/cyclecheck/api-server/releases).
 1. Unzip `cyclecheck-api.zip`.
 1. Change into the directory.
 1. Run `npm install --production`
+1. Configure (see below).
+
+### Standalone
+
+This is the version that the Docker image uses. It requires a specific version of Node (see [`.nvmrc`](https://github.com/cyclecheck/api-server/blob/master/.nvmrc)) because of the way the bundle is packaged.
+
+1. Download the latest `cyclecheck-standalone` from the [releases](https://github.com/cyclecheck/api-server/releases) page.
+1. Unzip `cyclecheck-api-standalone.zip`.
+1. Configure (see below).
 
 ## Setup
 
@@ -60,7 +69,16 @@ It must be placed in `process.cwd()` or you can set the environment variable `EN
 1. Follow the Installation steps above.
 1. Change into the `cyclecheck-api` folder.
 1. Create your `cyclecheck.env` file.
-1. Run `node dist/main.js`.
+1. Run `./cyclecheck-api`.
+1. API will be available at `localhost:3000` by default.
+   - Change `PORT` in the config file to change the port.
+
+### Standalone binary
+
+1. Ensure you are using the proper Node version (see [`.nvmrc`](https://github.com/cyclecheck/api-server/blob/master/.nvmrc)).
+1. Change into the `cyclecheck-api-standalone` folder.
+1. Create your `cyclecheck.env` file.
+1. Run `./cyclecheck-api`
 1. API will be available at `localhost:3000` by default.
    - Change `PORT` in the config file to change the port.
 

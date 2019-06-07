@@ -8,6 +8,8 @@ Tasks to do in no specific order
   - Check how many API calls were made to darksky
 - Create service/module for getting DarkSky stats
 - Add Openstreetmap as an alternative to google maps
+- Add ability to pass flags to the command line
+  - Like path to config, port, etc.
 
 ### Deploy
 

@@ -45,7 +45,7 @@ export class ConfigService {
     }
   }
 
-  get isDev(): boolean {
+  get isDevMode(): boolean {
     return isDev(this.config)
   }
 

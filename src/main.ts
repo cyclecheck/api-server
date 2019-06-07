@@ -8,19 +8,22 @@ import {
 import { AppModule } from './app.module'
 import { ConfigService } from './config/config.service'
 import { isDev } from './config/environment'
+import { getVersion } from './version/version'
 
-async function bootstrap() {
+export async function bootstrap() {
   const logger = new Logger('Bootstrap')
 
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter({ logger: isDev() }),
   )
-  const { port, host } = app.get(ConfigService).config
 
+  const {
+    config: { port, host },
+    isDevMode,
+  } = app.get<ConfigService>(ConfigService)
+
+  logger.log(`Current version: ${getVersion({ isDevMode })}`)
   logger.log(`Starting server: http://${host}:${port}`)
   await app.listen(port, host)
 }
-
-// tslint:disable-next-line
-bootstrap()

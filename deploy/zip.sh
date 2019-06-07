@@ -3,5 +3,5 @@
 output=$1
 shift
 
-echo "Zipping: 'zip -r $output $@'"
+echo "ZIP: running: 'zip -r $output $@'"
 zip -r $output "$@"

@@ -17,15 +17,16 @@ export interface Response<T> {
 
 export type APIResponse<T> = Promise<Response<T>>
 
-export function response<T>(
-  data: T,
+export async function response<T>(
+  data: T | Promise<T>,
   {
     message = 'OK',
     metadata = null,
     code = 200,
   }: { message?: string; metadata?: any; code?: number } = {},
-): Response<T> {
-  return { data, message, code, metadata }
+): Promise<Response<T>> {
+  const resolvedData = await Promise.resolve(data)
+  return { data: resolvedData, message, code, metadata }
 }
 
 export function headers(

@@ -13,14 +13,14 @@ export const DATABASE_NAME = 'cyclecheck.db'
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => {
-        const dbName = configService.isDev
+        const dbName = configService.isDevMode
           ? DATABASE_NAME.replace('.db', '-dev.db')
           : DATABASE_NAME
 
         return {
           type: 'sqlite',
           database: join(configService.config.dataDir, dbName),
-          logging: configService.isDev,
+          logging: configService.isDevMode,
           synchronize: true,
           entities,
         }

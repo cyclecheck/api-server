@@ -7,11 +7,13 @@ import { ConfigService } from './config/config.service'
 import { DatabaseModule } from './database/database.module'
 import { LocationModule } from './location/location.module'
 import { prettyPrint } from './util/misc'
+import { VersionModule } from './version/version.module'
 import { WeatherModule } from './weather/weather.module'
 
 @Module({
   imports: [
     ConfigModule,
+    VersionModule,
     DatabaseModule,
     AdminModule,
     WeatherModule,

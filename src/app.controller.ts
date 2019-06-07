@@ -8,6 +8,6 @@ export class AppController {
   @Get()
   @IgnoreSession()
   heartbeat() {
-    return response('You\'ve reached the CycleCheck API')
+    return response("You've reached the CycleCheck API")
   }
 }
