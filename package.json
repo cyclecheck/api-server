@@ -1,6 +1,6 @@
 {
   "name": "cyclecheck-server",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "main": "./dist/index.js",
   "bin": "./cyclecheck-api",
   "description": "Backend API for CycleCheck mobile app.",
