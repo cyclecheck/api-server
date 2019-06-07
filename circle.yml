@@ -35,9 +35,16 @@ jobs:
       - image: circleci/node:10.16.0-stretch
     steps:
       - checkout
-      - run: yarn install
-      - run: yarn package
-      - run: yarn semantic-release
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install
+      - run:
+          name: Verify release, package, and deploy
+          command: yarn semantic-release
       - store_artifacts:
           path: ./packages
           destination: packages
