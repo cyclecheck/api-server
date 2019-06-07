@@ -34,7 +34,7 @@ if [[ $REQUIRED != $ACTUAL ]]; then
 fi
 
 echo "$TAG: Packaging..."
-npx pkg -t "node10-$PKG_OS" -o "$OUTPUT/cyclecheck-api" package.json > /dev/null
+npx pkg -t "node10-$PKG_OS" -o "$OUTPUT/cyclecheck-api" package.json
 
 echo "$TAG: Copying sqlite3 native code"
 cp node_modules/sqlite3/lib/binding/*$PLATFORM-x64/node_sqlite3.node $OUTPUT

@@ -2,7 +2,7 @@
   "name": "cyclecheck-server",
   "version": "0.0.0",
   "main": "./dist/index.js",
-  "bin": "./cyclecheck-api",
+  "bin": "./dist/index.js",
   "description": "Backend API for CycleCheck mobile app.",
   "author": "Jordon de Hoog <jordon.dehoog@gmail.com>",
   "private": true,

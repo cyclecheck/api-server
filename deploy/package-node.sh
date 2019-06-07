@@ -16,8 +16,8 @@ echo "$TAG: using output dir: $OUTPUT"
 
 echo "$TAG: Copying required files"
 mkdir -p $OUTPUT
-cp -r dist/ $OUTPUT
-rm $OUTPUT/**/*.js.map $OUTPUT/**/*.d.ts
+cp -r dist/. $OUTPUT
+rm -v $OUTPUT/*.js.map $OUTPUT/*.d.ts $OUTPUT/**/*.js.map $OUTPUT/**/*.d.ts > /dev/null
 cp package.json $OUTPUT
 cp cyclecheck.sample.env $OUTPUT
 mv $OUTPUT/index.js $OUTPUT/cyclecheck-api
