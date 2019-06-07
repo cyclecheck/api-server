@@ -26,8 +26,18 @@ if [ ! $retVal -eq 0 ]; then
   exit 1
 fi
 
+
+SED_OPTS="-i"
+
+
 echo "$TAG: Setting the version to $1"
-sed -i '' s/$TARGET/$1/ $FILEPATH
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  echo "TAG: Detected macos... modifying the sed command"
+  sed -i '' s/$TARGET/$1/ $FILEPATH
+else
+  sed -i s/$TARGET/$1/ $FILEPATH
+fi
+
 retVal=$?
 if [ ! $retVal -eq 0 ]; then
   echo "$TAG: Was unable to replace the version!"
