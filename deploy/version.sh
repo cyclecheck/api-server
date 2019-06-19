@@ -28,7 +28,7 @@ fi
 
 echo "$TAG: Setting the version to $1"
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  echo "TAG: Detected macos... modifying the sed command"
+  echo "$TAG: Detected macos... modifying the sed command"
   sed -i '' s/$TARGET/$1/ $FILEPATH
 else
   sed -i s/$TARGET/$1/ $FILEPATH

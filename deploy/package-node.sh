@@ -1,4 +1,5 @@
 #!/bin/bash
+
 TAG="Package:Node"
 CWD="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 PARENT="$(cd $CWD/.. >/dev/null 2>&1 && pwd)"
