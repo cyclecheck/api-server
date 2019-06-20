@@ -6,7 +6,7 @@ export interface Token {
   key: string
 }
 
-@Entity()
+@Entity('tokens')
 export class TokenEntity implements Token {
   @PrimaryGeneratedColumn()
   id!: number

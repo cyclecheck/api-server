@@ -7,7 +7,7 @@ export interface AdminUser {
   password: string
 }
 
-@Entity()
+@Entity('admin_users')
 export class AdminUserEntity implements AdminUser {
   @PrimaryGeneratedColumn()
   id!: number

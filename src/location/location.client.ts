@@ -15,7 +15,11 @@ export class LocationClient {
       .reverseGeocode({ latlng: { lat, lng } })
       .asPromise()
 
-    return parsePlacesResult({ ...result.json.results[0], lat, lng })
+    return parsePlacesResult({
+      ...result.json.results[0],
+      lat: parseFloat(lat as any),
+      lng: parseFloat(lng as any),
+    })
   }
 
   async getPlaceDetails(

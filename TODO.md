@@ -10,6 +10,7 @@ Tasks to do in no specific order
 - Add Openstreetmap as an alternative to google maps
 - Add ability to pass flags to the command line
   - Like path to config, port, etc.
+- Add env option for github token, so that we can use the gh api without limits
 
 ### Deploy
 
