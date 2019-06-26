@@ -15,3 +15,9 @@ Tasks to do in no specific order
 ### Deploy
 
 - Somehow have a webhook or something to trigger a new release on the webserver
+
+### Docker
+
+- Set the UUID/permissions correctly.
+  - The data dir is created, but not accessible because it is made as root
+- Limit PM2 restarts
