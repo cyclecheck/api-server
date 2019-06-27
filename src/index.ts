@@ -5,7 +5,7 @@ import { argv } from 'yargs'
 import { getVersion } from './version/version'
 
 if (argv.v || argv.version) {
-  console.log(getVersion())
+  console.log(`v${getVersion()}`)
   process.exit(0)
 }
 
