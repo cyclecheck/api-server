@@ -613,10 +613,10 @@
     "@types/connect" "*"
     "@types/node" "*"
 
-"@types/cache-manager@1.2.7":
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/@types/cache-manager/-/cache-manager-1.2.7.tgz#d1f06b945e2dd6b43d0c3dac4a0353bdf9127657"
-  integrity sha512-61nNdxQMy1INsBoQs7OzghVRUDDzcbHZ0VN7h+pYaWdx4s9G+oaTf2DgEzdOSdorLT+v6j5Lafp340AH9l+0zQ==
+"@types/cache-manager@1.2.8":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@types/cache-manager/-/cache-manager-1.2.8.tgz#55b7704b6f5bb5a7e0fbcb0c69194d045c3a5d5f"
+  integrity sha512-6/0VdDlEiC/j8E8i5E6wjLKco39QxGq1gvbF1gdHAWgspf6v3HG/gr8kqVfrrAmL4u9Vur4l4smUfyu9HKa8SA==
 
 "@types/connect@*":
   version "3.4.32"
