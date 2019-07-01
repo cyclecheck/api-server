@@ -346,19 +346,19 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@nestjs/common@6.3.2":
-  version "6.3.2"
-  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-6.3.2.tgz#14f2d7ea1c268ba2a3b2d11787f6351fe760ec08"
-  integrity sha512-4g8hlQ2cCM0ze9K1w+7OYhTVGL6PuC7tXAgFM14MOTeKVAUz2QrJveGNE0hagDTKFagx9FvwF3B7ZSOIohw7aA==
+"@nestjs/common@6.4.0":
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-6.4.0.tgz#d8460d107309a34f57868470248fceeb69aac75a"
+  integrity sha512-mv2r0FBVak3YolimWCfIW7F1R4RHV2KmYXztliQMBFqs3AA/606mr3KPTcPtXCgjaMSS0VA9N2Scy0SIdvR/Kg==
   dependencies:
     axios "0.19.0"
     cli-color "1.4.0"
     uuid "3.3.2"
 
-"@nestjs/core@6.3.2":
-  version "6.3.2"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-6.3.2.tgz#13011b9dd5876781454920e57e36ed59a20ba596"
-  integrity sha512-dmHvk/IPlJcDKWZsBF2SMePO0NpkovMUU6VrAX9KzI1Y81foH/gfWzFaBhYX6GydPqVVFrYk23zt8yqvGWAZgA==
+"@nestjs/core@6.4.0":
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-6.4.0.tgz#e24d6f266034f528eb5ceb216d314dd989aea0f4"
+  integrity sha512-u6IdGxkrLcJUlCqR3z9EfX3T2chYU2AbQCAo7BmFx05JLRXVdfpTah65RFwSrqMRQZiubxifDVC8HMBDlhkbNw==
   dependencies:
     "@nuxtjs/opencollective" "0.2.2"
     fast-safe-stringify "2.0.6"
@@ -367,20 +367,20 @@
     optional "0.1.4"
     uuid "3.3.2"
 
-"@nestjs/platform-fastify@6.3.2":
-  version "6.3.2"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-fastify/-/platform-fastify-6.3.2.tgz#a5e2b4ebeb700b618d4cb6c3970123bd85d641c6"
-  integrity sha512-HqU/4mTzovYnHeWpSOpucgq+L/9+5Hkgqt11jldcQJ5zUA9SX/fz/l+Ktv7KW/pXXQtN0y/aDVkbWHSpMezXwQ==
+"@nestjs/platform-fastify@6.4.0":
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-fastify/-/platform-fastify-6.4.0.tgz#726663267d3ed31d28c0b8700435e5485ff153d4"
+  integrity sha512-LNmpQaw4MFqwp6IJaAiP6jCVq6d3f0VidGnjfkpjWbm+3sASaXejLBmmUzgwwwN2+JHyHPqcpU07dwh4xXOnlQ==
   dependencies:
-    fastify "2.5.0"
+    fastify "2.6.0"
     fastify-cors "2.1.3"
     fastify-formbody "3.1.0"
     path-to-regexp "3.0.0"
 
-"@nestjs/testing@6.3.2":
-  version "6.3.2"
-  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-6.3.2.tgz#27ee2cb8455a166da9f1bca3d3ab8bb63842bec7"
-  integrity sha512-BlXpA5KWok7AxwDzWn/yaOhqhAYDxUE17e+hanPEUxGkCInQIc750lG/M6ZF6aQNg1llxHquYyVKJLvzhdZqBA==
+"@nestjs/testing@6.4.0":
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-6.4.0.tgz#20fb7d43007805701448fa2c60cdd6c9cd08033a"
+  integrity sha512-YmN7t4aBx3bhy0sRFYhIgCCAoaedalqNFBt7ifgMtOfbce65CqhfJe/hUt2zoHPKLEhzCmxbZimlj6Fx9Vu1ZA==
   dependencies:
     optional "0.1.4"
 
@@ -2672,10 +2672,10 @@ fastify-plugin@^1.0.0, fastify-plugin@^1.5.0:
   dependencies:
     semver "^6.0.0"
 
-fastify@2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/fastify/-/fastify-2.5.0.tgz#24de69394231fc1b2eb82a9d932e909aa89ba56f"
-  integrity sha512-51z51VlbGw+ZJp8MJeZVqLtwAMMUiobo/YcAgyA7guRzflDa5tyw7yhZUDLfOng2YQIrVWZzWX7jPPvbQPQBxg==
+fastify@2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/fastify/-/fastify-2.6.0.tgz#45397b760f75278633fe0dcb30fcb4a26d1f66f6"
+  integrity sha512-3GxGV2P8731o2S5T6ng5NMJ9S7vFpZA4mk2mJEbMbhQ5aj1HhNGBOe39TYa2gWRrJVJuXxYYYIlY/5cFhiHpNg==
   dependencies:
     abstract-logging "^1.0.0"
     ajv "^6.9.2"
