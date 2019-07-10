@@ -33,9 +33,9 @@
   "dependencies": {
     "@google/maps": "0.5.5",
     "@hapi/joi": "15.1.0",
-    "@nestjs/common": "6.5.1",
-    "@nestjs/core": "6.5.1",
-    "@nestjs/platform-fastify": "6.5.1",
+    "@nestjs/common": "6.5.2",
+    "@nestjs/core": "6.5.2",
+    "@nestjs/platform-fastify": "6.5.2",
     "@nestjs/typeorm": "6.1.2",
     "@types/hat": "0.0.0",
     "cache-manager": "2.9.1",
@@ -51,7 +51,7 @@
     "yargs": "13.2.4"
   },
   "devDependencies": {
-    "@nestjs/testing": "6.5.1",
+    "@nestjs/testing": "6.5.2",
     "@semantic-release/changelog": "3.0.4",
     "@semantic-release/exec": "3.3.5",
     "@semantic-release/git": "7.0.16",
