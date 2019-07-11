@@ -38,7 +38,7 @@
     "@nestjs/platform-fastify": "6.5.2",
     "@nestjs/typeorm": "6.1.2",
     "@types/hat": "0.0.0",
-    "cache-manager": "2.9.1",
+    "cache-manager": "2.10.0",
     "darkskyapi-ts": "1.0.2",
     "dotenv": "8.0.0",
     "fs-extra": "8.0.1",
