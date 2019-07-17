@@ -2,9 +2,9 @@
 
 API server backend for the [CycleCheck](https://github.com/cyclecheck/cyclecheck) app, powered by [Nest](https://nestjs.com).
 
-![CircleCI branch](https://img.shields.io/circleci/project/github/cyclecheck/api-server/master.svg?label=release%20build) ![CircleCI (all branches)](https://img.shields.io/circleci/project/github/cyclecheck/api-server.svg) ![GitHub](https://img.shields.io/github/license/cyclecheck/api-server-docker.svg)
+![CircleCI branch](https://img.shields.io/circleci/project/github/cyclecheck/api-server/master.svg?label=release%20build) ![CircleCI (all branches)](https://img.shields.io/circleci/project/github/cyclecheck/api-server.svg) ![GitHub](https://img.shields.io/github/license/cyclecheck/api-server.svg)
 
-![GitHub release](https://img.shields.io/github/release/cyclecheck/api-server-docker.svg?label=gh-release) ![GitHub commits since latest release](https://img.shields.io/github/commits-since/cyclecheck/api-server-docker/latest/master.svg)
+![GitHub release](https://img.shields.io/github/release/cyclecheck/api-server.svg?label=gh-release) ![GitHub commits since latest release](https://img.shields.io/github/commits-since/cyclecheck/api-server/latest/master.svg)
 
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/) [![dependencies Status](https://david-dm.org/cyclecheck/api-server/status.svg)](https://david-dm.org/cyclecheck/api-server) [![devDependencies Status](https://david-dm.org/cyclecheck/api-server/dev-status.svg)](https://david-dm.org/cyclecheck/api-server?type=dev)
 
