@@ -38,3 +38,5 @@ tmp
 
 packages/
 CHANGELOG.md
+
+*.db
