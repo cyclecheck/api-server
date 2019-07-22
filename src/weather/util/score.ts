@@ -27,14 +27,13 @@ export function calculateAllScores(
 function calculateScore(weather: WeatherBlock, options: ScoreCriteria): Score {
   const { reasons, warnings } = createReasons(weather, options)
 
-  const score =
-    [...reasons, ...warnings].reduce(
-      (total, reasons) => total - reasons.score,
-      1,
-    ) % 1.0
+  const score = [...reasons, ...warnings].reduce(
+    (total, reasons) => total - reasons.score,
+    1,
+  )
 
   return {
-    value: score,
+    value: score === 1 ? score : score % 1.0,
     reasons: reasons.map(x => x.text),
     warnings: warnings.map(x => x.text),
   }
