@@ -2,6 +2,11 @@
 
 Tasks to do in no specific order
 
+## Fixes
+
+- The PlaceID is stored forever, which apparently can cause problems
+  - The details endpoint needs to look out for the "NOT_FOUND" status, and refresh the id!
+
 ### Nice to have
 
 - Admin endpoints

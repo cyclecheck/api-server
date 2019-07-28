@@ -1,4 +1,9 @@
-import { AddressComponent, createClient, GoogleMapsClient } from '@google/maps'
+import {
+  AddressComponent,
+  createClient,
+  GoogleMapsClient,
+  PlaceDetailsRequestField,
+} from '@google/maps'
 
 import { AutocompletePlace } from './location.service'
 import { Place } from './place.entity'
@@ -9,6 +14,16 @@ export class LocationClient {
   constructor(apiKey: string) {
     this.googleClient = createClient({ key: apiKey, Promise: Promise })
   }
+
+  private fields: PlaceDetailsRequestField[] = [
+    'address_component',
+    'formatted_address',
+    'geometry',
+    'name',
+    'place_id',
+    'type',
+    'utc_offset',
+  ]
 
   async reverseGeocode(lat: number, lng: number): Promise<Place> {
     const result = await this.googleClient
@@ -54,7 +69,7 @@ export class LocationClient {
   private async makePlaceRequest(placeid: string, sessiontoken: string) {
     try {
       const result = await this.googleClient
-        .place({ placeid, sessiontoken })
+        .place({ placeid, sessiontoken, fields: this.fields })
         .asPromise()
 
       if (result.json.status !== 'OK') return null
