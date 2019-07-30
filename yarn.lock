@@ -464,7 +464,7 @@
     "@semantic-release/error" "^2.1.0"
     aggregate-error "^3.0.0"
     fs-extra "^8.0.0"
-    lodash "^4.17.4"
+    lodash "^4.17.13"
 
 "@semantic-release/commit-analyzer@^6.1.0":
   version "6.1.0"
@@ -476,7 +476,7 @@
     conventional-commits-parser "^3.0.0"
     debug "^4.0.0"
     import-from "^2.1.0"
-    lodash "^4.17.4"
+    lodash "^4.17.13"
 
 "@semantic-release/error@^2.1.0", "@semantic-release/error@^2.2.0":
   version "2.2.0"
@@ -492,7 +492,7 @@
     aggregate-error "^3.0.0"
     debug "^4.0.0"
     execa "^1.0.0"
-    lodash "^4.17.4"
+    lodash "^4.17.13"
     parse-json "^4.0.0"
 
 "@semantic-release/git@7.0.12":
@@ -507,7 +507,7 @@
     execa "^1.0.0"
     fs-extra "^8.0.0"
     globby "^9.0.0"
-    lodash "^4.17.4"
+    lodash "^4.17.13"
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
@@ -527,7 +527,7 @@
     http-proxy-agent "^2.1.0"
     https-proxy-agent "^2.2.1"
     issue-parser "^3.0.0"
-    lodash "^4.17.4"
+    lodash "^4.17.13"
     mime "^2.0.3"
     p-filter "^1.0.0"
     p-retry "^3.0.0"
@@ -543,7 +543,7 @@
     aggregate-error "^3.0.0"
     execa "^1.0.0"
     fs-extra "^7.0.0"
-    lodash "^4.17.4"
+    lodash "^4.17.13"
     nerf-dart "^1.0.0"
     normalize-url "^4.0.0"
     npm "^6.8.0"
@@ -564,7 +564,7 @@
     get-stream "^4.0.0"
     import-from "^2.1.0"
     into-stream "^4.0.0"
-    lodash "^4.17.4"
+    lodash "^4.17.13"
 
 "@types/babel__core@^7.1.0":
   version "7.1.2"
@@ -7009,7 +7009,7 @@ semantic-release@15.13.16:
     git-log-parser "^1.2.0"
     hook-std "^2.0.0"
     hosted-git-info "^2.7.1"
-    lodash "^4.17.4"
+    lodash "^4.17.13"
     marked "^0.6.0"
     marked-terminal "^3.2.0"
     p-locate "^4.0.0"
