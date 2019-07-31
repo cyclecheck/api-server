@@ -1,4 +1,11 @@
-import { Controller, Get, Param, Query } from '@nestjs/common'
+import {
+  CacheInterceptor,
+  Controller,
+  Get,
+  Param,
+  Query,
+  UseInterceptors,
+} from '@nestjs/common'
 
 import { SessionRequired, SessionToken } from '../session/session.decorator'
 import { APIResponse, badRequest, notFound, response } from '../util/http'
@@ -11,6 +18,7 @@ export class LocationController {
   constructor(private readonly locationService: LocationService) {}
 
   @Get('latlng')
+  @UseInterceptors(CacheInterceptor)
   async fromLatLng(@Query() { lat, lng }: LatLng): APIResponse<Place> {
     if (!lat || !lng) {
       throw badRequest('Both lat and lng are required')

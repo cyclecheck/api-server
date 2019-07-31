@@ -115,6 +115,6 @@ const EnvConfigSchema: ObjectSchema = object({
   PORT: number().default(process.env.PORT || DEFAULT_PORT),
   ADMIN_USERNAME: string().default(DEFAULT_ADMIN_USERNAME),
   ADMIN_PASSWORD: string()
-    .length(8)
+    .min(8)
     .required(),
 })

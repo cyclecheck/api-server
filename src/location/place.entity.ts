@@ -12,7 +12,7 @@ export interface Place {
   lng: number
 }
 
-@Entity()
+@Entity('places')
 export class PlaceEntity implements Place {
   @PrimaryColumn()
   id!: string
