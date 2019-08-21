@@ -1,6 +1,11 @@
 import { mpsToKph } from '../../util/misc'
-import { Reason, Reasons, Score, ScoreCriteria, Scores } from '../models/score'
-import { Weather, WeatherBlock } from '../models/weather'
+import { Reason, Reasons, Score, ScoreCriteria } from '../models/score'
+import {
+  Weather,
+  WeatherBlock,
+  WeatherBlockWithScore,
+  WeatherWithScore,
+} from '../models/weather'
 
 export const TEMPERATURE_WOBBLE = 5 // Degrees
 export const WIND_SPEED_WOBBLE = 10 // km/h
@@ -8,8 +13,9 @@ export const WIND_SPEED_WOBBLE = 10 // km/h
 export function calculateAllScores(
   weather: Weather,
   options: ScoreCriteria,
-): Scores {
+): WeatherWithScore {
   return {
+    ...weather,
     current: calculateScore(weather.current, options),
     hourly: weather.hourly.map(hour => calculateScore(hour, options)),
   }
@@ -24,19 +30,24 @@ export function calculateAllScores(
  * @param weather The weather forecast.
  * @param options Options for determining score.
  */
-function calculateScore(weather: WeatherBlock, options: ScoreCriteria): Score {
+function calculateScore(
+  weather: WeatherBlock,
+  options: ScoreCriteria,
+): WeatherBlockWithScore {
   const { reasons, warnings } = createReasons(weather, options)
 
-  const score = [...reasons, ...warnings].reduce(
+  const calculatedScore = [...reasons, ...warnings].reduce(
     (total, reasons) => total - reasons.score,
     1,
   )
 
-  return {
-    value: score === 1 ? score : score % 1.0,
+  const score: Score = {
+    value: calculatedScore === 1 ? calculatedScore : calculatedScore % 1.0,
     reasons: reasons.map(x => x.text),
     warnings: warnings.map(x => x.text),
   }
+
+  return { ...weather, score }
 }
 
 function createReasons(
