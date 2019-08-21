@@ -40,9 +40,8 @@ function calculateScore(
     (total, reasons) => total - reasons.score,
     1,
   )
-
   const score: Score = {
-    value: calculatedScore === 1 ? calculatedScore : calculatedScore % 1.0,
+    value: calculatedScore <= 0 ? 0 : calculatedScore,
     reasons: reasons.map(x => x.text),
     warnings: warnings.map(x => x.text),
   }
@@ -55,7 +54,7 @@ function createReasons(
   { minTemp, maxTemp, maxWind }: ScoreCriteria,
 ) {
   const currentTemp = Math.round(weather.temperature)
-  const windSpeed = mpsToKph(Math.round(weather.wind.speed))
+  const windSpeed = Math.round(mpsToKph(weather.wind.speed))
   const precipProbability = weather.precipitation.probability
 
   const isTooCold: Reason = {
@@ -90,7 +89,7 @@ function createReasons(
 
   const isWindy: Reason = {
     check: windSpeed + WIND_SPEED_WOBBLE >= maxWind,
-    score: 0.3,
+    score: 0.15,
     text: Reasons.WINDY,
   }
 

@@ -10,7 +10,6 @@ import {
   DEFAULT_ACCEPTABLE_MAX_TEMP,
   DEFAULT_ACCEPTABLE_MAX_WIND,
   DEFAULT_ACCEPTABLE_MIN_TEMP,
-  Weather,
   WeatherWithScore,
 } from './models/weather'
 import { formatWeatherUnits, isAcceptableUnit } from './util/format'
@@ -56,15 +55,18 @@ export class WeatherController {
       )
     }
 
-    const formattedWeather = raw ? weather : formatWeatherUnits(weather, units)
-    const scoredWeather = calculateAllScores(formattedWeather, {
+    const scoredWeather = calculateAllScores(weather, {
       maxTemp,
       minTemp,
       maxWind,
     })
 
+    const formattedWeatherWithScore: WeatherWithScore = raw
+      ? scoredWeather
+      : (formatWeatherUnits(scoredWeather, units) as WeatherWithScore)
+
     return response<CheckResponseData>({
-      weather: scoredWeather,
+      weather: formattedWeatherWithScore,
       criteria: { units, maxTemp, minTemp, maxWind },
     })
   }
