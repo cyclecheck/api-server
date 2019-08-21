@@ -16,7 +16,7 @@
     "build": "tsc -p tsconfig.build.json && chmod +x dist/index.js",
     "format": "prettier --write \"src/**/*.ts\" \"*.{json,md}\"",
     "start": "ts-node -r tsconfig-paths/register src/index.ts",
-    "start:dev": "rimraf dist/server && concurrently --handle-input \"wait-on dist/index.js && nodemon\" \"tsc -w -p tsconfig.build.json\" ",
+    "start:dev": "rimraf dist/server && concurrently --handle-input \"tsc -w -p tsconfig.build.json\" \"wait-on dist/index.js && nodemon\"",
     "start:debug": "nodemon --config nodemon-debug.json",
     "prestart:prod": "rimraf dist && npm run build",
     "start:prod": "node dist/index.js",
