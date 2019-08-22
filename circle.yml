@@ -32,7 +32,7 @@ jobs:
           destination: dist
   release:
     docker:
-      - image: circleci/node:10.16.0-stretch
+      - image: circleci/node:10.16.3-stretch
     steps:
       - checkout
       - restore_cache:
