@@ -7225,10 +7225,10 @@ secure-json-parse@^1.0.0:
   resolved "https://registry.yarnpkg.com/secure-json-parse/-/secure-json-parse-1.0.0.tgz#fa32c6778166b783cf6315db967944e63f7747d0"
   integrity sha512-kMg4jXttRQzVyLebIDc+MRxCueJ/zsmHpCn59BRd0mZUCd+V02wNd7/Pds8Nyhv7jfLHo1KkUOzdIF7cRMU4LQ==
 
-semantic-release@15.13.21:
-  version "15.13.21"
-  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.13.21.tgz#d021c75f889cff75ae3410736942bee6c4557da7"
-  integrity sha512-3S9thQas28iv3NeHUqQVsDnxMcBGQICdxabeNnJ8BnbRBvCkgqCg3v9zo/+O5a8GCyxrgjtwJ2iWozL8SiIq1w==
+semantic-release@15.13.24:
+  version "15.13.24"
+  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.13.24.tgz#f0b9544427d059ba5e3c89ac1545234130796be7"
+  integrity sha512-OPshm6HSp+KmZP9dUv1o3MRILDgOeHYWPI+XSpQRERMri7QkaEiIPkZzoNm2d6KDeFDnp03GphQQS4+Zfo+x/Q==
   dependencies:
     "@semantic-release/commit-analyzer" "^6.1.0"
     "@semantic-release/error" "^2.2.0"
@@ -7255,7 +7255,7 @@ semantic-release@15.13.21:
     resolve-from "^5.0.0"
     semver "^6.0.0"
     signale "^1.2.1"
-    yargs "^13.1.0"
+    yargs "^14.0.0"
 
 semver-compare@^1.0.0:
   version "1.0.0"
@@ -8746,7 +8746,7 @@ yargs-parser@^9.0.2:
   dependencies:
     camelcase "^4.1.0"
 
-yargs@14.0.0:
+yargs@14.0.0, yargs@^14.0.0:
   version "14.0.0"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-14.0.0.tgz#ba4cacc802b3c0b3e36a9e791723763d57a85066"
   integrity sha512-ssa5JuRjMeZEUjg7bEL99AwpitxU/zWGAGpdj0di41pOEmJti8NR6kyUIJBkR78DTYNPZOU08luUo0GTHuB+ow==
@@ -8799,7 +8799,7 @@ yargs@^12.0.5:
     y18n "^3.2.1 || ^4.0.0"
     yargs-parser "^11.1.1"
 
-yargs@^13.0.0, yargs@^13.1.0, yargs@^13.2.1:
+yargs@^13.0.0, yargs@^13.2.1:
   version "13.2.4"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-13.2.4.tgz#0b562b794016eb9651b98bd37acf364aa5d6dc83"
   integrity sha512-HG/DWAJa1PAnHT9JAhNa8AbAv3FPaiLzioSjCcmuXXhP8MlpHO5vwls4g4j6n30Z74GVQj8Xa62dWVx1QCGklg==
