@@ -3,6 +3,7 @@ import { Alert, DataPoint, Forecast } from 'darkskyapi-ts'
 import { unixToDate } from '../../util/misc'
 import { getDisplayIcon } from './icons'
 import { Preciptation } from './precipitation'
+import { Score } from './score'
 import { Wind, WindModel } from './wind'
 
 /**
@@ -38,6 +39,11 @@ export interface Weather {
   alerts: Alert[]
 }
 
+export interface WeatherWithScore extends Weather {
+  current: WeatherBlockWithScore
+  hourly: WeatherBlockWithScore[]
+}
+
 export interface WeatherBlock {
   forecastedTime: number
   temperature: number
@@ -48,6 +54,10 @@ export interface WeatherBlock {
   wind: Wind
   precipitation: Preciptation
   weatherType: string
+}
+
+export interface WeatherBlockWithScore extends WeatherBlock {
+  score: Score
 }
 
 export function createWeatherModel(forecast: Forecast): Weather {
