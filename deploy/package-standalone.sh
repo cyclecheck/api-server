@@ -24,7 +24,7 @@ echo "$TAG: Output: $OUTPUT"
 
 echo "$TAG: Checking node version."
 
-REQUIRED=$(cat .nvmrc)
+REQUIRED="v$(cat .nvmrc)"
 ACTUAL=$(node -v)
 
 if [[ $REQUIRED != $ACTUAL ]]; then
