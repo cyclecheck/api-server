@@ -33,6 +33,8 @@ export interface Weather {
   sunrise: number
   sunset: number
   wind: Wind
+  maxWind: number
+  minWind: number
   precipitation: Preciptation
   current: WeatherBlock
   hourly: WeatherBlock[]
@@ -77,11 +79,18 @@ export function createWeatherModel(forecast: Forecast): Weather {
     .slice(0, 24)
     .map(hour => createWeatherBlock(hour, isNight))
 
+  const windSpeeds = [
+    current.wind.speed,
+    ...hourly.map(hour => hour.wind.speed),
+  ]
+
   return {
     current,
     hourly,
     maxTemp: today.temperatureMax,
     minTemp: today.temperatureMin,
+    maxWind: Math.max(...windSpeeds),
+    minWind: Math.min(...windSpeeds),
     sunrise: today.sunriseTime,
     sunset: today.sunsetTime,
     wind: createWind(today),
