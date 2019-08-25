@@ -22,6 +22,8 @@ export function formatWeatherUnits(weather: Weather, units: Units): Weather {
     ...weather,
     maxTemp: formatTemperature(maxTemp, unitsToUse),
     minTemp: formatTemperature(minTemp, unitsToUse),
+    maxWind: formatWindSpeed(weather.maxWind, unitsToUse),
+    minWind: formatWindSpeed(weather.minWind, unitsToUse),
     current: formatWeatherBlock(current, unitsToUse),
     hourly: hourly.map(hour => formatWeatherBlock(hour, unitsToUse)),
   }

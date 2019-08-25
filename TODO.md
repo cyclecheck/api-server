@@ -26,3 +26,8 @@ Tasks to do in no specific order
 - Set the UUID/permissions correctly.
   - The data dir is created, but not accessible because it is made as root
 - Limit PM2 restarts
+
+### Internationalization
+
+- Add an object to the cyclescore which contains all the verbs that should be used for displaying the score. That way it can be internationalized in one place
+- Add a language queryparam to change verbage
