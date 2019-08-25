@@ -1,6 +1,7 @@
 import { Controller, Get, Param, Query } from '@nestjs/common'
 import { Units } from 'darkskyapi-ts'
 
+import { Place } from 'src/location/place.entity'
 import { LocationService } from '../location/location.service'
 import { SessionRequired, SessionToken } from '../session/session.decorator'
 import { notFound, serviceUnavailable } from '../util/errors'
@@ -44,10 +45,10 @@ export class WeatherController {
       )
     }
 
-    const location = await this.locationService.placeDetails(id, token)
-    if (!location) throw notFound(`Could not find place: ${id}`)
+    const place = await this.locationService.placeDetails(id, token)
+    if (!place) throw notFound(`Could not find place: ${id}`)
 
-    const { lat, lng } = location
+    const { lat, lng } = place
     const weather = await this.weatherService.getWeatherForecast(id, lat, lng)
     if (!weather) {
       throw serviceUnavailable(
@@ -66,6 +67,7 @@ export class WeatherController {
       : (formatWeatherUnits(scoredWeather, units) as WeatherWithScore)
 
     return response<CheckResponseData>({
+      place,
       weather: formattedWeatherWithScore,
       criteria: { units, maxTemp, minTemp, maxWind },
     })
@@ -73,6 +75,7 @@ export class WeatherController {
 }
 
 interface CheckResponseData {
+  place: Place
   weather: WeatherWithScore
   criteria: CheckQueryParams
 }
