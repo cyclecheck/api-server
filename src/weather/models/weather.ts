@@ -56,6 +56,7 @@ export interface WeatherBlock {
   wind: Wind
   precipitation: Preciptation
   weatherType: string
+  weatherSummary: string
 }
 
 export interface WeatherBlockWithScore extends WeatherBlock {
@@ -113,6 +114,7 @@ function createWeatherBlock(
     wind: createWind(datapoint),
     precipitation: createPrecipitation(datapoint),
     weatherType: getDisplayIcon(datapoint.icon!, isNight),
+    weatherSummary: datapoint.summary!,
   }
 }
 
