@@ -2130,13 +2130,13 @@ d@1:
   dependencies:
     es5-ext "^0.10.9"
 
-darkskyapi-ts@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/darkskyapi-ts/-/darkskyapi-ts-1.0.3.tgz#36315a0acf2df4ff573551d32793ed2a9a84dda4"
-  integrity sha512-NX1Mcu8Sao/oSVamjBnilgLHw2qXgobUCkx6cD9ZdtOxw2g0Y7M+puPfRI+ayk+BDdP6sqrdbBw0pd+W3dkkog==
+darkskyapi-ts@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/darkskyapi-ts/-/darkskyapi-ts-1.0.4.tgz#849745275d2220213d05097127406ec9ddc58d6f"
+  integrity sha512-Ek+a67CXnsXK0ocP3b5HHZaKA8yCHvA71P5Ddhp3Bb1jbYJBBWE/J01p2f1sgoQtL3omVtZTWFFSRl8+FkcVDA==
   dependencies:
     axios "^0.19.0"
-    date-fns "^1.30.1"
+    date-fns "^2.0.0"
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -2158,6 +2158,11 @@ date-fns@^1.27.2, date-fns@^1.30.1:
   version "1.30.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
+
+date-fns@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.0.1.tgz#c5f30e31d3294918e6b6a82753a4e719120e203d"
+  integrity sha512-C14oTzTZy8DH1Eq8N78owrCWvf3+cnJw88BTK/N3DYWVxDJuJzPaNdplzYxDYuuXXGvqBcO4Vy5SOrwAooXSWw==
 
 dateformat@^3.0.0:
   version "3.0.3"
