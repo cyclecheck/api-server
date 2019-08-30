@@ -5,7 +5,7 @@ import { WeatherClient } from './weather.client'
 
 @Injectable()
 export class WeatherService implements Invalidate {
-  private readonly cache = new MemoryCache({ ttl: minutes(30), max: 1000 })
+  private readonly cache = new MemoryCache({ ttl: minutes(10), max: 1000 })
 
   constructor(private readonly weatherClient: WeatherClient) {}
 

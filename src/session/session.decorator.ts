@@ -14,9 +14,7 @@ export const IGNORE_SESSION = 'ignore_session'
  * * Another step at slowing down someone from using the API not from the app
  * (they can easily check the source code, but whatever)
  * * Using it in the Google Places API, so we don't get over billed
- *
- * @see https://developers.google.com/places/web-service/autocomplete#session_tokens
- *
+ * * [Read more](https://developers.google.com/places/web-service/autocomplete#session_tokens)
  */
 export const SessionToken = createParamDecorator(
   (_, req) => req.headers[SESSION_TOKEN_HEADER],
