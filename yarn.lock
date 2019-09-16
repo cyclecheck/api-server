@@ -758,10 +758,10 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/google__maps@0.5.7":
-  version "0.5.7"
-  resolved "https://registry.yarnpkg.com/@types/google__maps/-/google__maps-0.5.7.tgz#1bf3875e4f8515fa3d4c49a6d781a7c20eb602af"
-  integrity sha512-kTcoGjECuD9jFN0y0tYO74QE3LpOqybdFffBqO9zo/a4XX02c8CrAMOsvyXX3tJocuUsbczPr73vwaJELfvOWg==
+"@types/google__maps@0.5.8":
+  version "0.5.8"
+  resolved "https://registry.yarnpkg.com/@types/google__maps/-/google__maps-0.5.8.tgz#1f88dbf5ee28a5491ebe4de229c7da0e2ac76c32"
+  integrity sha512-yrNHBIrvqNF7Ec8/nqaABUnyl90I0VkcR/EtWhz9h5dTWB+idrtiTSzsk4j0JwxBHwwmb0RVJYgx90jJcuk3IA==
 
 "@types/hapi__joi@*":
   version "15.0.1"
