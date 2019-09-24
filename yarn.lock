@@ -2130,10 +2130,10 @@ d@1:
   dependencies:
     es5-ext "^0.10.9"
 
-darkskyapi-ts@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/darkskyapi-ts/-/darkskyapi-ts-1.0.4.tgz#849745275d2220213d05097127406ec9ddc58d6f"
-  integrity sha512-Ek+a67CXnsXK0ocP3b5HHZaKA8yCHvA71P5Ddhp3Bb1jbYJBBWE/J01p2f1sgoQtL3omVtZTWFFSRl8+FkcVDA==
+darkskyapi-ts@1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/darkskyapi-ts/-/darkskyapi-ts-1.0.5.tgz#8204db2803210abe2e00b957c03c509dbe9536e2"
+  integrity sha512-nNNSKJEIkUpEIstcHG+efJo5iuVWPHnnjShCrS0kmt/a81GCYQxx0ShujSpEr8YMdQhHssKkCJwOldIS15KBKQ==
   dependencies:
     axios "^0.19.0"
     date-fns "^2.0.0"
