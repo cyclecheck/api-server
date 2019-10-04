@@ -175,11 +175,12 @@
     resolve-from "^5.0.0"
     resolve-global "^1.0.0"
 
-"@google/maps@0.5.5":
-  version "0.5.5"
-  resolved "https://registry.yarnpkg.com/@google/maps/-/maps-0.5.5.tgz#478a5791e3b8d444be966462daec3ee43eb331e0"
-  integrity sha512-RSZriyE2XViVhXgdEcQaEu3jMYh2A/jS0VahLHXqGO0VfPyEbDac4PAn7/hBJiTavWpxchKfe5OI9inJofFWxA==
+"@google/maps@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@google/maps/-/maps-1.0.1.tgz#e0f4b32119500ff3b92c47028623208f3b3d5d43"
+  integrity sha512-TURNZX9L7pQoluhhovt9Dvrw1MISJl2eCidknEeybG8T8e8UH9NNH7SYoxLkdU4l/1sqyUd9m8uwKGe7llWWPQ==
   dependencies:
+    https-proxy-agent "^2.2.1"
     uuid ">=2.2.1"
 
 "@hapi/address@2.x.x":
