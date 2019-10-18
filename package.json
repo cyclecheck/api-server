@@ -46,7 +46,7 @@
     "rxjs": "6.5.3",
     "semver": "6.3.0",
     "sqlite3": "4.1.0",
-    "typeorm": "0.2.19",
+    "typeorm": "0.2.20",
     "yargs": "14.2.0"
   },
   "devDependencies": {
