@@ -175,12 +175,12 @@
     resolve-from "^5.0.0"
     resolve-global "^1.0.0"
 
-"@google/maps@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@google/maps/-/maps-1.0.1.tgz#e0f4b32119500ff3b92c47028623208f3b3d5d43"
-  integrity sha512-TURNZX9L7pQoluhhovt9Dvrw1MISJl2eCidknEeybG8T8e8UH9NNH7SYoxLkdU4l/1sqyUd9m8uwKGe7llWWPQ==
+"@google/maps@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@google/maps/-/maps-1.0.2.tgz#5100e29f3ef7f0384a9210c486dde8c6c8b4c8ea"
+  integrity sha512-iTsvIIgVjIicC+UdLCJOMSBnOmLnmgnOXrjTBUUQr/ffBMfH9GdnlrA9R+vH/kZSFEp9AZUDw0vJ5ES6avfTPQ==
   dependencies:
-    https-proxy-agent "^2.2.1"
+    https-proxy-agent "^3.0.0"
     uuid ">=2.2.1"
 
 "@hapi/address@2.x.x":
@@ -972,6 +972,13 @@ agent-base@4, agent-base@^4.1.0, agent-base@~4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/agent-base/-/agent-base-4.2.1.tgz#d89e5999f797875674c07d87f260fc41e83e8ca9"
   integrity sha512-JVwXMr9nHYTUXsBFKUqhJwvlcYU/blreOEUkhNR2eXZIvwd+c+o5V4MgDPKWnMS/56awN3TRzIP+KoPn+roQtg==
+  dependencies:
+    es6-promisify "^5.0.0"
+
+agent-base@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/agent-base/-/agent-base-4.3.0.tgz#8165f01c436009bccad0b1d122f05ed770efc6ee"
+  integrity sha512-salcGninV0nPrwpGNn4VTXBb1SOuXQBiqbrNXoeizJsHrsL6ERFM2Ne3JUSBWRE6aeNJI2ROP/WEEIDUiDe3cg==
   dependencies:
     es6-promisify "^5.0.0"
 
@@ -3584,6 +3591,14 @@ https-proxy-agent@^2.2.1:
   integrity sha512-HPCTS1LW51bcyMYbxUIOO4HEOlQ1/1qRaFWcyxvwaqUS9TY88aoEuHUY33kuAh1YhVVaDQhLZsnPd+XNARWZlQ==
   dependencies:
     agent-base "^4.1.0"
+    debug "^3.1.0"
+
+https-proxy-agent@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-3.0.0.tgz#0106efa5d63d6d6f3ab87c999fa4877a3fd1ff97"
+  integrity sha512-y4jAxNEihqvBI5F3SaO2rtsjIOnnNA8sEbuiP+UhJZJHeM2NRm6c09ax2tgqme+SgUUvjao2fJXF4h3D6Cb2HQ==
+  dependencies:
+    agent-base "^4.3.0"
     debug "^3.1.0"
 
 humanize-ms@^1.2.1:

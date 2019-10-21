@@ -30,7 +30,7 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "@google/maps": "1.0.1",
+    "@google/maps": "1.0.2",
     "@hapi/joi": "16.1.7",
     "@nestjs/common": "6.8.3",
     "@nestjs/core": "6.8.3",
