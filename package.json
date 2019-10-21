@@ -61,7 +61,7 @@
     "@types/google__maps": "0.5.8",
     "@types/hapi__joi": "15.0.4",
     "@types/jest": "24.0.19",
-    "@types/node": "12.11.1",
+    "@types/node": "12.11.2",
     "@types/semver": "6.0.2",
     "@types/supertest": "2.0.8",
     "commitizen": "4.0.3",
