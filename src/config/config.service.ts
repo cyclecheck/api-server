@@ -1,10 +1,17 @@
-import { number, object, ObjectSchema, string, validate } from '@hapi/joi'
+import { number, object, ObjectSchema, string } from '@hapi/joi'
 import { Injectable, Logger } from '@nestjs/common'
 import * as dotenv from 'dotenv'
 import { ensureDirSync } from 'fs-extra'
 import { resolve } from 'path'
 
-import { ENV_PROD, ENVS, isDev, isProd, isTest } from './environment'
+import {
+  ENV_DEV,
+  ENV_PROD,
+  ENV_TEST,
+  isDev,
+  isProd,
+  isTest,
+} from './environment'
 
 export interface Config {
   googleMapsApi: string
@@ -58,9 +65,8 @@ export class ConfigService {
   }
 
   private mapAndValidateConfig(): Config {
-    const { error, value: validated } = validate(
+    const { error, value: validated } = EnvConfigSchema.validate(
       process.env as EnvConfig,
-      EnvConfigSchema,
       { stripUnknown: true },
     )
 
@@ -104,7 +110,9 @@ const DEFAULT_ADMIN_USERNAME = 'admin'
 
 const EnvConfigSchema: ObjectSchema = object({
   NODE_ENV: string()
-    .valid(ENVS)
+    .valid(ENV_DEV)
+    .valid(ENV_PROD)
+    .valid(ENV_TEST)
     .default(process.env.NODE_ENV || ENV_PROD),
   API_KEY_GOOGLE_MAPS: string().required(),
   API_KEY_DARKSKY: string().required(),
