@@ -17,7 +17,7 @@ export function getVersion({
 
   if (!valid(GENERATED_VERSION)) {
     throw new Error(
-      'Something went wrong and the version was never set! Run in dev mode to bypass',
+      'Something went wrong and the version was never set! Run in dev mode to bypass, or pass --dev',
     )
   }
 
