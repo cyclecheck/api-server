@@ -1,4 +1,4 @@
-import { number, object, ObjectSchema, string, validate } from '@hapi/joi'
+import { number, object, ObjectSchema, string } from '@hapi/joi'
 import { Injectable, Logger } from '@nestjs/common'
 import * as dotenv from 'dotenv'
 import { ensureDirSync } from 'fs-extra'
@@ -58,9 +58,8 @@ export class ConfigService {
   }
 
   private mapAndValidateConfig(): Config {
-    const { error, value: validated } = validate(
+    const { error, value: validated } = EnvConfigSchema.validate(
       process.env as EnvConfig,
-      EnvConfigSchema,
       { stripUnknown: true },
     )
 
