@@ -5,12 +5,12 @@ import { ensureDirSync } from 'fs-extra'
 import { resolve } from 'path'
 
 import {
+  ENV_DEV,
   ENV_PROD,
+  ENV_TEST,
   isDev,
   isProd,
   isTest,
-  ENV_TEST,
-  ENV_DEV,
 } from './environment'
 
 export interface Config {
