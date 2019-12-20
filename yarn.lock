@@ -731,10 +731,10 @@
     "@types/connect" "*"
     "@types/node" "*"
 
-"@types/cache-manager@2.10.0":
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/@types/cache-manager/-/cache-manager-2.10.0.tgz#48ed0a0ace70ad59c4165235e344a682c0981fa6"
-  integrity sha512-og4E9Mw/FsBz0A3NZbHrVmx49PW4hKnGvTmulWk8OgROJm9ti4n9x0inxsd6jJiaFMol4+MyMdB1l2aexxmrYw==
+"@types/cache-manager@2.10.1":
+  version "2.10.1"
+  resolved "https://registry.yarnpkg.com/@types/cache-manager/-/cache-manager-2.10.1.tgz#c7bc354be7988659e139e10fc7bde4b221f7f128"
+  integrity sha512-oJhVIOeC8dX9RZ7OtEZvZ/6cHF5aQWoRcuJ7KwK3Xb69hIIdElpWzfJ35fOXvYOgoyRXA34jFrD8lqEjDWz37w==
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
