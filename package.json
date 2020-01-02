@@ -47,7 +47,7 @@
     "semver": "7.1.1",
     "sqlite3": "4.1.1",
     "typeorm": "0.2.22",
-    "yargs": "15.0.2"
+    "yargs": "15.1.0"
   },
   "devDependencies": {
     "@nestjs/testing": "6.10.13",
