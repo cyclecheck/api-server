@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@google/maps": "1.0.2",
-    "@hapi/joi": "16.1.8",
+    "@hapi/joi": "17.0.0",
     "@nestjs/common": "6.10.14",
     "@nestjs/core": "6.10.14",
     "@nestjs/platform-fastify": "6.10.14",
