@@ -1,7 +1,7 @@
 import {
   AddressComponent,
   createClient,
-  GoogleMapsClient,
+  GoogleMapsClientWithPromise,
   PlaceDetailsRequestField,
 } from '@google/maps'
 
@@ -9,7 +9,7 @@ import { AutocompletePlace } from './location.service'
 import { Place } from './place.entity'
 
 export class LocationClient {
-  private readonly googleClient: GoogleMapsClient
+  private readonly googleClient: GoogleMapsClientWithPromise
 
   constructor(apiKey: string) {
     this.googleClient = createClient({ key: apiKey, Promise: Promise })
