@@ -187,10 +187,10 @@
     resolve-from "^5.0.0"
     resolve-global "^1.0.0"
 
-"@google/maps@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@google/maps/-/maps-1.0.2.tgz#5100e29f3ef7f0384a9210c486dde8c6c8b4c8ea"
-  integrity sha512-iTsvIIgVjIicC+UdLCJOMSBnOmLnmgnOXrjTBUUQr/ffBMfH9GdnlrA9R+vH/kZSFEp9AZUDw0vJ5ES6avfTPQ==
+"@google/maps@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@google/maps/-/maps-1.1.0.tgz#038d8bf53d63f2ca0540c5d30c9136c8f70e0df1"
+  integrity sha512-mIU397T3H0Xlio1ftZvB11DQr+7aYEYTMeDuLfI8OTE0mMgvD3sAFWuAhXvCCLrfEy8FXvLxQp1fwYXyM+lRPA==
   dependencies:
     https-proxy-agent "^3.0.0"
     uuid ">=2.2.1"
