@@ -433,20 +433,20 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@nestjs/common@6.11.2":
-  version "6.11.2"
-  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-6.11.2.tgz#7982de63f899b34b3066aad1942cf2e1ccc33cfa"
-  integrity sha512-5SpqqQ5dZiRkzK84JlJJk4CKG5ECqOPqPsAFBk4CwE98LP3nIeLUBT8KLcTn4FKhK8Ih68zKfmpdBf4821dvNg==
+"@nestjs/common@6.11.3":
+  version "6.11.3"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-6.11.3.tgz#96c1943d29a940ef043268fb9d23bea9ae20d950"
+  integrity sha512-XZ7/XmOpHqQqAmD2yYX2yvB13Qm8S+Xwv8/egCCvVUjMRSk6DoizHc/awpT1ddc1Tevt3fQS8qwhELs1Jkm89g==
   dependencies:
     axios "0.19.2"
     cli-color "2.0.0"
     tslib "1.10.0"
     uuid "3.4.0"
 
-"@nestjs/core@6.11.2":
-  version "6.11.2"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-6.11.2.tgz#b5ea1ea519050e170e831f43cbef87512239cb70"
-  integrity sha512-8BZd2ow1LGeN7mEjN/njpZKjRU7Fjq+lU4TE7nbpx7+Beogs/a5cElKr2WsoU0Ke6Jpy/2sx+K6uJr7OtqYqyg==
+"@nestjs/core@6.11.3":
+  version "6.11.3"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-6.11.3.tgz#d4ea0c64e5aeb9f675daf70b600977019df3c19e"
+  integrity sha512-tKQr0XozUgpBWsvRoMtPFFcF9pM1teUdoPRPZ49JjIBa5zydWeh+BjpP4P06QnyITgRI6nBwSB7AiYubbeHydQ==
   dependencies:
     "@nuxtjs/opencollective" "0.2.2"
     fast-safe-stringify "2.0.7"
@@ -456,10 +456,10 @@
     tslib "1.10.0"
     uuid "3.4.0"
 
-"@nestjs/platform-fastify@6.11.2":
-  version "6.11.2"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-fastify/-/platform-fastify-6.11.2.tgz#9683a98dcfa40f3995fb01f1b1a7d813d61e8b69"
-  integrity sha512-mb7snQss8yQe9eqFVRGMoQbLfd4hWt+1uT+ksucCmg0ELBQXeav4jeVGtSGE7CJ2ZDpm+VPDuUR637nr0A2rsQ==
+"@nestjs/platform-fastify@6.11.3":
+  version "6.11.3"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-fastify/-/platform-fastify-6.11.3.tgz#edd1907f2a25f47af67e760eb45149150d19fd88"
+  integrity sha512-/oiJip+cNwW1ePC0/LoCCwgTarKaNb7KVoG6cyGqqivQSDB8lonFxL9bHf55uV4ePsttCfyXX9bMVLDpoBll0g==
   dependencies:
     fastify "2.11.0"
     fastify-cors "3.0.1"
@@ -467,10 +467,10 @@
     path-to-regexp "3.2.0"
     tslib "1.10.0"
 
-"@nestjs/testing@6.11.2":
-  version "6.11.2"
-  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-6.11.2.tgz#12b7f57fe81cf62e2c82d33c106be55301892037"
-  integrity sha512-ThJW8/39ea6e5obBd6xrr4Cwux7D/RBMnOmWbYvSzLt0vtxTjBx0yzRpQVJz7s8xdeIocDLOGDeHZkYuYYE+3A==
+"@nestjs/testing@6.11.3":
+  version "6.11.3"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-6.11.3.tgz#6508bb7135c5f124f36ac2befdda45b33492351f"
+  integrity sha512-+cNORcNJH5zttraRSdNkotfI0kuDgPPmmgQkTKeWBixxv/smM3dFn+Du/vXF5ueBVA2UJKmRWyf3tJZV2y41OQ==
   dependencies:
     optional "0.1.4"
     tslib "1.10.0"
