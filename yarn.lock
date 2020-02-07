@@ -793,10 +793,10 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/google__maps@0.5.11":
-  version "0.5.11"
-  resolved "https://registry.yarnpkg.com/@types/google__maps/-/google__maps-0.5.11.tgz#f565e0c16f853602b9e89e568200014b017df175"
-  integrity sha512-Se9bGlZ5VVVHmx4F1uwdPUo213cwkoLc2CZMLJ9+gYOCp/4NHe7taGJxK5juCVTxU76ISbT3biugmC3IZme4LQ==
+"@types/google__maps@0.5.12":
+  version "0.5.12"
+  resolved "https://registry.yarnpkg.com/@types/google__maps/-/google__maps-0.5.12.tgz#a2d9de06c51f41173566dad656c3c037e5a49a0f"
+  integrity sha512-v+smradrsbGca3Y3EraMpaGEbiBAE4afwJmVMS9n9pZ//FToy3gC7uWS6geYa1/4ulrmntg3ZwI5XK7DbqO1nw==
 
 "@types/hapi__joi@16.0.9":
   version "16.0.9"
