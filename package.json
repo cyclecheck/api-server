@@ -35,7 +35,7 @@
     "@nestjs/common": "6.11.6",
     "@nestjs/core": "6.11.6",
     "@nestjs/platform-fastify": "6.11.6",
-    "@nestjs/typeorm": "6.3.0",
+    "@nestjs/typeorm": "6.3.1",
     "@types/hat": "0.0.1",
     "cache-manager": "2.11.1",
     "darkskyapi-ts": "1.0.6",
