@@ -983,10 +983,10 @@
   resolved "https://registry.yarnpkg.com/@types/google__maps/-/google__maps-0.5.12.tgz#a2d9de06c51f41173566dad656c3c037e5a49a0f"
   integrity sha512-v+smradrsbGca3Y3EraMpaGEbiBAE4afwJmVMS9n9pZ//FToy3gC7uWS6geYa1/4ulrmntg3ZwI5XK7DbqO1nw==
 
-"@types/hapi__joi@16.0.10":
-  version "16.0.10"
-  resolved "https://registry.yarnpkg.com/@types/hapi__joi/-/hapi__joi-16.0.10.tgz#7e259ef3100b8e04b2eb1643e2e0b01427cde739"
-  integrity sha512-SJawJYHi9Hwh4A3u7BEVYDAkcf9HGmUU32+ruVBAl0Q30LUC2RgDK1xPi3AJbhR6/CDN3a989SjJtR7OwA7eRA==
+"@types/hapi__joi@16.0.11":
+  version "16.0.11"
+  resolved "https://registry.yarnpkg.com/@types/hapi__joi/-/hapi__joi-16.0.11.tgz#96ac70952602ceed5eac8fb45198989892c837c2"
+  integrity sha512-Gndkl4WXpuJovi6XFOfJN74VX/Ynk6Hp74Vfex5in/UKBnG6eSdX2wK3nkYY8jsDy8kuuEFoz1F5AGMGz4edmw==
 
 "@types/hat@0.0.1":
   version "0.0.1"
