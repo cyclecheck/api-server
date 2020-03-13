@@ -1,18 +1,18 @@
-version: 2
-jobs:
-  build:
+version: 2.1
+executors:
+  base-executor:
     docker:
       - image: circleci/node:10.19.0-stretch
         environment:
           - NODE_ENV: TEST
-    working_directory: ~/repo
+
+commands:
+  install_deps:
+    description: 'Install node dependencies from the cache, and save the cache'
     steps:
-      - checkout
-      - run: yarn versions
       - restore_cache:
           name: Restore Yarn Package Cache
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
+          key: yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
           command: yarn install
@@ -21,6 +21,14 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
+
+jobs:
+  build:
+    executor: base-executor
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - install_deps
       - run:
           name: Lint all source files
           command: yarn lint
@@ -31,17 +39,10 @@ jobs:
           path: ./dist
           destination: dist
   release:
-    docker:
-      - image: circleci/node:10.16.3-stretch
+    executor: base-executor
     steps:
       - checkout
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install Dependencies
-          command: yarn install
+      - install_deps
       - run:
           name: Verify release, package, and deploy
           command: yarn semantic-release
@@ -50,7 +51,7 @@ jobs:
           destination: packages
 
 workflows:
-  version: 2
+  version: 2.1
   build_and_release:
     jobs:
       - build
