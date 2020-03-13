@@ -15,9 +15,14 @@ export function getVersion({
 } = {}) {
   if (isDevMode) return `${defaultVersion}-dev`
 
-  if (!valid(GENERATED_VERSION)) {
+  const packageVersion = tryRequireVersion()
+  const checkVersion = packageVersion || GENERATED_VERSION
+
+  if (!valid(checkVersion)) {
     throw new Error(
-      'Something went wrong and the version was never set! Run in dev mode to bypass',
+      'Something went wrong and the version was never set!' +
+      'Was not able to manually get version from package.json' +
+      'Run in dev mode to bypass, or pass --dev',
     )
   }
 
@@ -31,4 +36,14 @@ export function compare(
   if (!gt(newVersion, current)) return null
 
   return diff(current, newVersion)
+}
+
+function tryRequireVersion(): string | null {
+  try {
+    return require('../../package.json').version
+  } catch (error) {
+    // no-op
+  }
+
+  return null
 }

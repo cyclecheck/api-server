@@ -16,6 +16,25 @@ This library uses following libraries for development:
 - [yarn](https://yarnpkg.com/lang/en/) for package management
 - [husky](https://github.com/typicode/husky) for git hooks (pre-commit, pre-push)
 
+### Start developing
+
+First you will need to make sure you create a `cyclecheck.env` file.  You will not be able to run the api **AT ALL** without this env file.
+
+1. Copy `cyclecheck.sample.env` to `cyclecheck.env`
+1. Add `ENV=development` to the top of the file
+1. Fill in the other required values
+1. Adjust any of the optional values as needed.
+
+Yarn commands:
+
+- `yarn start`
+    - Runs the app from source as-is, using `ts-node` to transpile on the fly.
+    - **NOTE**: If you **do not** add `ENV=development` to the `cyclecheck.env` file, the app will attempt to pull the version from the package.json.  If it can't find it, it will crash.
+- `yarn start:dev`
+    - Watches for changes to the source and will reload the API when it detects changes
+- `yarn start:debug`
+    - Starts the app for debugging, allows you to set breakpoints.
+
 ### 🧪 Tests
 
 Test are written and run via Jest 💪
