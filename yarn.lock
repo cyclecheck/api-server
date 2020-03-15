@@ -1546,10 +1546,10 @@ cache-base@^1.0.1:
     union-value "^1.0.0"
     unset-value "^1.0.0"
 
-cache-manager@2.11.1:
-  version "2.11.1"
-  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-2.11.1.tgz#212e8c3db15288af653b029a1d9fe12f1fd9df61"
-  integrity sha512-XhUuc9eYwkzpK89iNewFwtvcDYMUsvtwzHeyEOPJna/WsVsXcrzsA1ft2M0QqPNunEzLhNCYPo05tEfG+YuNow==
+cache-manager@3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-3.2.0.tgz#32d76a18bd39fd0fc2b25bbc078208f0cdcafd00"
+  integrity sha512-RkYKgbhAzWo9TtE27/BgS4/HWfmt2GWQBusjIaTK0DfBAC4ruMmEdHF/Z59O05jKujIoW7a+HVsgdkA4EFPo8w==
   dependencies:
     async "1.5.2"
     lodash.clonedeep "4.5.0"
