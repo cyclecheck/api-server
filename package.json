@@ -40,7 +40,7 @@
     "cache-manager": "3.2.1",
     "darkskyapi-ts": "1.0.6",
     "dotenv": "8.2.0",
-    "fs-extra": "8.1.0",
+    "fs-extra": "9.0.0",
     "hat": "0.0.3",
     "reflect-metadata": "0.1.13",
     "rxjs": "6.5.4",
