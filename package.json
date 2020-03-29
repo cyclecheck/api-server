@@ -72,7 +72,7 @@
     "jest": "25.2.4",
     "lint-staged": "10.0.10",
     "nodemon": "2.0.2",
-    "pkg": "4.4.4",
+    "pkg": "4.4.5",
     "prettier": "2.0.2",
     "semantic-release": "17.0.4",
     "supertest": "4.0.2",
