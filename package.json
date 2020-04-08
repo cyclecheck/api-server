@@ -83,7 +83,7 @@
     "tslint-config-prettier": "1.18.0",
     "tslint-config-standard": "9.0.0",
     "typescript": "3.8.3",
-    "wait-on": "4.0.1"
+    "wait-on": "4.0.2"
   },
   "husky": {
     "hooks": {
