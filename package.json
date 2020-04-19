@@ -70,7 +70,7 @@
     "cz-conventional-changelog": "3.1.0",
     "husky": "4.2.5",
     "jest": "25.3.0",
-    "lint-staged": "10.1.5",
+    "lint-staged": "10.1.6",
     "nodemon": "2.0.3",
     "pkg": "4.4.7",
     "prettier": "2.0.4",
