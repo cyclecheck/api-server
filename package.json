@@ -71,7 +71,7 @@
     "husky": "4.2.5",
     "jest": "25.5.4",
     "lint-staged": "10.2.2",
-    "nodemon": "2.0.3",
+    "nodemon": "2.0.4",
     "pkg": "4.4.8",
     "prettier": "2.0.5",
     "semantic-release": "17.0.7",
