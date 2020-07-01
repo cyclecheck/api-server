@@ -45,7 +45,7 @@
     "reflect-metadata": "0.1.13",
     "rxjs": "6.5.5",
     "semver": "7.3.2",
-    "sqlite3": "4.2.0",
+    "sqlite3": "5.0.0",
     "typeorm": "0.2.25",
     "yargs": "15.3.1"
   },
