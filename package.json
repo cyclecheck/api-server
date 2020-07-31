@@ -43,7 +43,7 @@
     "fs-extra": "9.0.1",
     "hat": "0.0.3",
     "reflect-metadata": "0.1.13",
-    "rxjs": "6.6.0",
+    "rxjs": "6.6.2",
     "semver": "7.3.2",
     "sqlite3": "4.2.0",
     "typeorm": "0.2.25",
