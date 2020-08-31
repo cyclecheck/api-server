@@ -61,7 +61,7 @@
     "@types/fs-extra": "9.0.1",
     "@types/google__maps": "0.5.12",
     "@types/hapi__joi": "17.1.4",
-    "@types/jest": "26.0.10",
+    "@types/jest": "26.0.12",
     "@types/node": "12.12.54",
     "@types/semver": "7.3.3",
     "@types/supertest": "2.0.10",
