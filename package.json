@@ -63,7 +63,7 @@
     "@types/hapi__joi": "17.1.4",
     "@types/jest": "26.0.13",
     "@types/node": "12.12.58",
-    "@types/semver": "7.3.3",
+    "@types/semver": "7.3.4",
     "@types/supertest": "2.0.10",
     "commitizen": "4.2.1",
     "concurrently": "5.3.0",
