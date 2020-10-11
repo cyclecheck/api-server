@@ -74,7 +74,7 @@
     "nodemon": "2.0.4",
     "pkg": "4.4.9",
     "prettier": "2.1.2",
-    "semantic-release": "17.1.2",
+    "semantic-release": "17.2.0",
     "supertest": "4.0.2",
     "ts-jest": "26.4.1",
     "ts-node": "9.0.0",
