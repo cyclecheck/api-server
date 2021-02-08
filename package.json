@@ -56,7 +56,7 @@
     "@semantic-release/git": "9.0.0",
     "@types/cache-manager": "2.10.3",
     "@types/dotenv": "6.1.1",
-    "@types/express": "4.17.4",
+    "@types/express": "4.17.8",
     "@types/express-serve-static-core": "4.17.5",
     "@types/fs-extra": "9.0.2",
     "@types/google__maps": "0.5.12",
