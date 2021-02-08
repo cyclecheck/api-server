@@ -1,4 +1,9 @@
-import { createParamDecorator, SetMetadata, UseGuards } from '@nestjs/common'
+import {
+  ExecutionContext,
+  createParamDecorator,
+  SetMetadata,
+  UseGuards,
+} from '@nestjs/common'
 
 import { AuthGuard, HEADER_TOKEN } from './auth.guard'
 
@@ -8,6 +13,7 @@ export const IgnoreAuth = () => SetMetadata(IGNORE_AUTH, true)
 
 export const Authenticated = () => UseGuards(AuthGuard)
 
-export const AuthToken = createParamDecorator(
-  (_, req) => req.headers[HEADER_TOKEN],
-)
+export const AuthToken = createParamDecorator((_, ctx: ExecutionContext) => {
+  const request = ctx.switchToHttp().getRequest()
+  return request.headers[HEADER_TOKEN]
+})

@@ -11,6 +11,7 @@
     "baseUrl": "./",
     "incremental": true,
     "strict": true,
+    "noUnusedLocals": true,
     "noEmitOnError": true
   },
   "exclude": ["node_modules"]

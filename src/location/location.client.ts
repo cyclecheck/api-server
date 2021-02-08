@@ -82,7 +82,7 @@ export class LocationClient {
 }
 
 interface Result {
-  address_components: AddressComponent[]
+  address_components: AddressComponent<any>[]
   place_id: string
   lat: number
   lng: number
