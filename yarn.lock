@@ -998,10 +998,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/google__maps@0.5.12":
-  version "0.5.12"
-  resolved "https://registry.yarnpkg.com/@types/google__maps/-/google__maps-0.5.12.tgz#a2d9de06c51f41173566dad656c3c037e5a49a0f"
-  integrity sha512-v+smradrsbGca3Y3EraMpaGEbiBAE4afwJmVMS9n9pZ//FToy3gC7uWS6geYa1/4ulrmntg3ZwI5XK7DbqO1nw==
+"@types/google__maps@0.5.14":
+  version "0.5.14"
+  resolved "https://registry.yarnpkg.com/@types/google__maps/-/google__maps-0.5.14.tgz#d148f35dca684ca179a345c233a6772f2250bb99"
+  integrity sha512-BLb9+oMxmUTvjZd+ydtALyvx98TUhXROdvwrLhaU8n/cVjJNsyCCJaZDUiXWZLCmqjjk86JAHHrGuY6UOZze4w==
 
 "@types/graceful-fs@^4.1.2":
   version "4.1.3"
