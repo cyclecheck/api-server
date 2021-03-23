@@ -44,7 +44,7 @@
     "hat": "0.0.3",
     "reflect-metadata": "0.1.13",
     "rxjs": "6.6.6",
-    "semver": "7.3.4",
+    "semver": "7.3.5",
     "sqlite3": "5.0.2",
     "typeorm": "0.2.31",
     "yargs": "16.2.0"
