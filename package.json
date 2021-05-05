@@ -39,7 +39,7 @@
     "@types/hat": "0.0.1",
     "cache-manager": "3.4.3",
     "darkskyapi-ts": "1.0.6",
-    "dotenv": "8.5.1",
+    "dotenv": "8.6.0",
     "fs-extra": "9.1.0",
     "hat": "0.0.3",
     "reflect-metadata": "0.1.13",
